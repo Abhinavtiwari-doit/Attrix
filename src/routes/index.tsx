@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       { title: "Attrix Technologies — Digital Transformation, Automation & AI" },
       { name: "description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
       { property: "og:title", content: "Attrix Technologies — Digital Transformation, Automation & AI" },
-      { property: "og:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software." },
+      { property: "og:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
