@@ -81,7 +81,7 @@ function ServiceDetail() {
           <div>
             <p className="eyebrow">Benefits</p>
             <ul className="mt-4 space-y-3">
-              {service.benefits.map((b) => (
+              {service.benefits.map((b: string) => (
                 <li key={b} className="flex items-start gap-2 text-sm">
                   <Check className="mt-0.5 h-4 w-4 text-brand" /> {b}
                 </li>
@@ -91,7 +91,7 @@ function ServiceDetail() {
           <div>
             <p className="eyebrow">Technologies</p>
             <ul className="mt-4 flex flex-wrap gap-2">
-              {service.technologies.map((t) => (
+              {service.technologies.map((t: string) => (
                 <li key={t} className="rounded-md border border-hairline bg-background px-2.5 py-1 text-xs">{t}</li>
               ))}
             </ul>
