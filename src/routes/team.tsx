@@ -44,6 +44,9 @@ function TeamPage() {
                 <div className="p-3">
                   <p className="text-base font-semibold">{m.name}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{m.role}</p>
+                  {"bio" in m && m.bio ? (
+                    <p className="mt-3 text-xs leading-relaxed text-ink-soft">{m.bio}</p>
+                  ) : null}
                   <div className="mt-3 flex items-center gap-1.5">
                     <a href="#" aria-label="LinkedIn" className="grid h-7 w-7 place-items-center rounded-md border border-hairline hover:bg-surface">
                       <Linkedin className="h-3 w-3" />
