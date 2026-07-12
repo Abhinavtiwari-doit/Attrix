@@ -50,7 +50,7 @@ function ProjectDetail() {
 
       <Section tone="surface">
         <div className="grid gap-8 md:grid-cols-3">
-          {project.metrics.map((m) => (
+          {project.metrics.map((m: { k: string; v: string }) => (
             <div key={m.k} className="rounded-2xl border border-hairline bg-background p-8">
               <p className="text-xs uppercase tracking-widest text-muted-foreground">{m.k}</p>
               <p className="mt-3 font-display text-4xl font-bold text-brand">{m.v}</p>
@@ -74,7 +74,7 @@ function ProjectDetail() {
         </div>
         <div className="mt-12 flex flex-wrap items-center gap-3">
           <p className="text-sm font-semibold">Stack:</p>
-          {project.tech.map((t) => (
+          {project.tech.map((t: string) => (
             <span key={t} className="rounded-md border border-hairline bg-background px-2.5 py-1 text-xs">{t}</span>
           ))}
         </div>
