@@ -217,6 +217,12 @@ export const team = [
   { name: "Rohan Verma", role: "Founder & CEO", dept: "Leadership" },
   { name: "Meera Kapoor", role: "Chief AI Officer", dept: "Leadership" },
   { name: "Karim Al-Farsi", role: "Head of Cloud", dept: "Leadership" },
+  { name: "Abhishek Tiwari", role: "Business Operations Lead — MBA, IIT Patna", dept: "Leadership",
+    bio: "Business operations leader specialising in remote team management, SOPs, workflow automation, and revenue growth. 40% revenue lift, 35% operational efficiency gains, and 15+ person remote teams." },
+  { name: "Abhinav Tiwari", role: "Tech Operations & Automation Manager", dept: "Automation",
+    bio: "Automation, CRM, and data engineer working across Zoho Deluge, Pabbly, Python, AWS, and Shopify. Builds AI systems, dashboards, and full-stack integrations end-to-end." },
+  { name: "Jaya Pratha J", role: "Zoho & Full-Stack Developer", dept: "Engineering",
+    bio: "Zoho Creator, CRM, Books, Desk, Recruit, and Deluge specialist with 3+ years shipping ERP-style client apps, integrations, and workflow automations." },
   { name: "Anya Sørensen", role: "Head of Design", dept: "Design" },
   { name: "Lucas Bernard", role: "Principal Engineer", dept: "Engineering" },
   { name: "Priya Nair", role: "Automation Lead", dept: "Automation" },
@@ -224,6 +230,17 @@ export const team = [
   { name: "Hana Ito", role: "ML Engineer", dept: "AI" },
   { name: "Elias Weiss", role: "Marketing Director", dept: "Marketing" },
   { name: "Sana Ahmed", role: "Senior Project Manager", dept: "Delivery" },
+];
+
+export const skills: { category: string; items: string[] }[] = [
+  { category: "Languages", items: ["Python", "SQL", "TypeScript", "JavaScript", "Deluge", "C", "HTML", "CSS"] },
+  { category: "AI & Machine Learning", items: ["scikit-learn", "TensorFlow", "PyTorch", "Hugging Face", "Transformers", "Gradio", "LangChain", "OpenAI"] },
+  { category: "Data & BI", items: ["Power BI", "Excel (VBA)", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Tally ERP", "MIS Reporting"] },
+  { category: "Cloud & DevOps", items: ["AWS (EC2, S3, IAM, Lambda)", "Google Cloud", "Azure", "Docker", "Linux", "Git", "GitHub Actions"] },
+  { category: "Automation & Integration", items: ["Zoho Deluge", "Pabbly Connect", "Zapier", "Make", "n8n", "REST APIs", "WhatsApp Business API", "Webhooks"] },
+  { category: "Zoho Ecosystem", items: ["Zoho Creator", "Zoho CRM", "Zoho Books", "Zoho Desk", "Zoho Recruit", "Zoho Inventory", "Zoho Forms", "Zoho Projects", "Zoho Writer"] },
+  { category: "Web & E-commerce", items: ["React", "Flask", "WordPress", "Shopify", "Wayfair", "Walmart Marketplace", "SEO", "Google Ads"] },
+  { category: "Operations & Delivery", items: ["Remote Team Leadership", "SOP Development", "KPI Design", "Process Automation", "Talent Acquisition (Ceipal)", "Jira", "Agile PM"] },
 ];
 
 export const jobs = [
