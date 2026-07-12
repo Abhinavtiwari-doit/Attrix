@@ -9,18 +9,56 @@ export const Route = createFileRoute("/projects/$slug")({
     if (!project) throw notFound();
     return { project };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const p = loaderData?.project;
-    const title = p ? `${p.name} — Case Study` : "Case Study — Attrix Technologies";
+    const title = p ? `${p.name} — Case Study | Attrix Technologies` : "Case Study — Attrix Technologies";
+    const desc = p?.summary ?? "Case study from Attrix Technologies.";
+    const url = `https://attrix.lovable.app/projects/${params.slug}`;
     return {
       meta: [
         { title },
-        { name: "description", content: p?.summary ?? "Case study." },
+        { name: "description", content: desc },
         { property: "og:title", content: title },
-        { property: "og:url", content: p ? `/projects/${p.slug}` : "/projects" },
+        { property: "og:description", content: desc },
+        { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "article:section", content: p?.category ?? "Case Study" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: desc },
       ],
-      links: p ? [{ rel: "canonical", href: `/projects/${p.slug}` }] : [],
+      links: p ? [{ rel: "canonical", href: url }] : [],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: p.name,
+                description: p.summary,
+                articleSection: p.category,
+                about: p.industry,
+                keywords: p.tech.join(", "),
+                url,
+                author: { "@type": "Organization", name: "Attrix Technologies" },
+                publisher: { "@type": "Organization", name: "Attrix Technologies" },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://attrix.lovable.app/" },
+                  { "@type": "ListItem", position: 2, name: "Projects", item: "https://attrix.lovable.app/projects" },
+                  { "@type": "ListItem", position: 3, name: p.name, item: url },
+                ],
+              }),
+            },
+          ]
+        : [],
     };
   },
   notFoundComponent: () => (

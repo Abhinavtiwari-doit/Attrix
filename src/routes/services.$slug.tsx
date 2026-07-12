@@ -9,19 +9,58 @@ export const Route = createFileRoute("/services/$slug")({
     if (!service) throw notFound();
     return { service };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const s = loaderData?.service;
     const title = s ? `${s.name} — Attrix Technologies` : "Service — Attrix Technologies";
     const desc = s?.summary ?? "Services from Attrix Technologies.";
+    const url = `https://attrix.lovable.app/services/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: s ? `/services/${s.slug}` : "/services" },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: desc },
       ],
-      links: s ? [{ rel: "canonical", href: `/services/${s.slug}` }] : [],
+      links: s ? [{ rel: "canonical", href: url }] : [],
+      scripts: s
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: s.name,
+                serviceType: s.tag,
+                description: s.details,
+                url,
+                provider: { "@type": "Organization", name: "Attrix Technologies", url: "https://attrix.lovable.app" },
+                areaServed: "Global",
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: `${s.name} — benefits`,
+                  itemListElement: s.benefits.map((b: string) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: b } })),
+                },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://attrix.lovable.app/" },
+                  { "@type": "ListItem", position: 2, name: "Services", item: "https://attrix.lovable.app/services" },
+                  { "@type": "ListItem", position: 3, name: s.name, item: url },
+                ],
+              }),
+            },
+          ]
+        : [],
     };
   },
   notFoundComponent: () => (
