@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 import { Section, Pill } from "@/components/site/primitives";
-import { tools } from "@/content/site";
+import { tools, skills } from "@/content/site";
+
 
 export const Route = createFileRoute("/tools")({
   head: () => ({
@@ -21,15 +22,36 @@ function ToolsPage() {
     <>
       <Section className="!pb-10">
         <div className="max-w-3xl">
-          <p className="eyebrow">Free tools</p>
+          <p className="eyebrow">Skills & tools</p>
           <h1 className="mt-3 text-4xl font-bold md:text-6xl">Small utilities. Real leverage.</h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            The calculators, generators, and templates we use ourselves — free for you to keep.
+            The stack we ship on, and the free calculators, generators, and templates we use ourselves.
           </p>
         </div>
       </Section>
-      <Section className="!pt-6">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+      <Section tone="surface" className="!pt-6">
+        <p className="eyebrow">Team stack</p>
+        <h2 className="mt-3 font-display text-2xl font-bold md:text-3xl">Skills across the practice</h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {skills.map((group) => (
+            <div key={group.category} className="rounded-2xl border border-hairline bg-background p-6">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-brand">{group.category}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {group.items.map((s) => (
+                  <span key={s} className="rounded-md border border-hairline bg-surface px-2.5 py-1 text-xs text-ink-soft">{s}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <p className="eyebrow">Free tools</p>
+        <h2 className="mt-3 font-display text-2xl font-bold md:text-3xl">Grab-and-go utilities</h2>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
           {tools.map((t) => (
             <div key={t.name} className="card-lift group flex flex-col rounded-2xl border border-hairline bg-background p-6">
               <div className="flex items-center justify-between">
