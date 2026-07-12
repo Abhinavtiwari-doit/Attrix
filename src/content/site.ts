@@ -107,23 +107,66 @@ export const process = [
   { step: "07", title: "Support", body: "SLAs, monitoring, and continuous improvement post-launch." },
 ];
 
-export const projects = [
-  { slug: "vireo-patient-intake", name: "Vireo Health — Patient Intake Platform", industry: "Healthcare",
+export type Project = {
+  slug: string;
+  name: string;
+  industry: string;
+  category: "AI & Machine Learning" | "Data & Analytics" | "Zoho & Business Apps" | "Automation & Operations" | "Product Engineering";
+  summary: string;
+  tech: string[];
+  metrics: { k: string; v: string }[];
+};
+
+export const projects: Project[] = [
+  { slug: "vireo-patient-intake", name: "Vireo Health — Patient Intake Platform", industry: "Healthcare", category: "Product Engineering",
     summary: "A HIPAA-aligned intake system that shrunk onboarding from 40 minutes to 9.",
     tech: ["React", "Supabase", "n8n", "AWS"],
     metrics: [{ k: "Turnaround", v: "-62%" }, { k: "Staff hours saved / wk", v: "180" }, { k: "Patient CSAT", v: "4.8/5" }] },
-  { slug: "meridian-freight-ops", name: "Meridian — Freight Ops Console", industry: "Logistics",
+  { slug: "meridian-freight-ops", name: "Meridian — Freight Ops Console", industry: "Logistics", category: "Product Engineering",
     summary: "A unified operations console replacing four spreadsheets and two legacy tools.",
     tech: ["TypeScript", "Postgres", "Power BI", "Azure"],
     metrics: [{ k: "On-time deliveries", v: "+18%" }, { k: "Ops cost", v: "-24%" }, { k: "Uptime", v: "99.98%" }] },
-  { slug: "fabrica-automation", name: "Fabrica — End-to-end Sales Automation", industry: "Manufacturing",
+  { slug: "fabrica-automation", name: "Fabrica — End-to-end Sales Automation", industry: "Manufacturing", category: "Automation & Operations",
     summary: "Zoho CRM, n8n, and WhatsApp orchestrated into one revenue engine.",
     tech: ["Zoho", "n8n", "Twilio", "Metabase"],
     metrics: [{ k: "Lead response", v: "< 4 min" }, { k: "Close rate", v: "+31%" }, { k: "Ops cost", v: "-40%" }] },
-  { slug: "portage-mvp", name: "Portage — Zero-to-One MVP", industry: "Startup",
+  { slug: "portage-mvp", name: "Portage — Zero-to-One MVP", industry: "Startup", category: "Product Engineering",
     summary: "A no-code+code hybrid MVP live in ten weeks, ready for the seed round.",
     tech: ["FlutterFlow", "Xano", "Stripe"],
     metrics: [{ k: "Time to launch", v: "10 wks" }, { k: "Seed raised", v: "$2.4M" }, { k: "DAU at launch", v: "3.1k" }] },
+
+  { slug: "diagnoseme-ai", name: "DiagnoseMe.AI — Health Prediction Platform", industry: "Healthcare", category: "AI & Machine Learning",
+    summary: "A Flask-based full-stack AI web app that predicts disease from symptoms using Random Forest models and a REST API.",
+    tech: ["Python", "Flask", "scikit-learn", "Pandas", "NumPy"],
+    metrics: [{ k: "Model accuracy", v: "92%" }, { k: "Records trained", v: "20k+" }, { k: "Latency", v: "<300ms" }] },
+  { slug: "roastmycode", name: "RoastMyCode — Multimodal AI Code Reviewer", industry: "Developer Tools", category: "AI & Machine Learning",
+    summary: "A humorous AI code-review tool built on Hugging Face LLMs with a Gradio UI and live deployment on Spaces.",
+    tech: ["Python", "Gradio", "Hugging Face", "Transformers"],
+    metrics: [{ k: "Languages supported", v: "12" }, { k: "Feedback latency", v: "Real-time" }, { k: "Deployment", v: "HF Spaces" }] },
+  { slug: "credit-card-fraud-detection", name: "Credit Card Fraud Detection", industry: "Finance", category: "AI & Machine Learning",
+    summary: "Supervised-learning fraud detection over financial transactions with EDA, feature engineering, and tree-based models.",
+    tech: ["Python", "scikit-learn", "Pandas", "Seaborn", "Matplotlib"],
+    metrics: [{ k: "Recall lift", v: "+15%" }, { k: "F1 score", v: "0.91" }, { k: "Records", v: "20k+" }] },
+  { slug: "sales-dashboard-excel", name: "Interactive Sales Data Dashboard", industry: "Retail & E-commerce", category: "Data & Analytics",
+    summary: "An Excel + VBA dashboard converting raw sales data into KPIs with slicers, timelines, and automated pivots.",
+    tech: ["Microsoft Excel", "Pivot Tables", "VBA", "Macros"],
+    metrics: [{ k: "Manual effort", v: "-30%" }, { k: "KPIs surfaced", v: "40+" }, { k: "Refresh", v: "1-click" }] },
+  { slug: "packers-relocators-platform", name: "Packers & Relocators — Service & Tracking App", industry: "Logistics", category: "Zoho & Business Apps",
+    summary: "A Zoho Creator app for service booking, employee tracking, and job dispatch with third-party API integrations.",
+    tech: ["Zoho Creator", "Deluge", "Zoho CRM", "REST APIs"],
+    metrics: [{ k: "Dispatch time", v: "-45%" }, { k: "Manual entry", v: "-70%" }, { k: "Live jobs", v: "500+/mo" }] },
+  { slug: "plastic-moulding-mgmt", name: "Plastic Moulding Management System", industry: "Manufacturing", category: "Zoho & Business Apps",
+    summary: "Production planning platform with real-time analytics dashboards, workflow automation, and inventory sync.",
+    tech: ["Zoho Creator", "Deluge", "Zoho Inventory", "Workflow Automation"],
+    metrics: [{ k: "Planning cycle", v: "-38%" }, { k: "OEE visibility", v: "Real-time" }, { k: "Rejection rate", v: "-12%" }] },
+  { slug: "ab-kids-remote-ops", name: "AB Kids — Remote Operations System", industry: "Education", category: "Automation & Operations",
+    summary: "SOP-driven remote operations for a 15+ person team with KPI dashboards and AI-powered task management.",
+    tech: ["Notion", "Zapier", "AI Tools", "Google Workspace"],
+    metrics: [{ k: "Revenue growth", v: "+40%" }, { k: "Onboarding time", v: "-25%" }, { k: "Efficiency", v: "+35%" }] },
+  { slug: "alpha-silicon-recruitment", name: "Alpha Silicon — Recruitment Automation", industry: "Technology & SaaS", category: "Automation & Operations",
+    summary: "Ceipal-driven recruitment pipeline with automated screening, mass-mail sequences, and candidate matrices.",
+    tech: ["Ceipal", "Automation", "MIS Reporting"],
+    metrics: [{ k: "Hiring cycle", v: "-25%" }, { k: "Placements", v: "50+" }, { k: "Response rate", v: "70%+" }] },
 ];
 
 export const products = [
