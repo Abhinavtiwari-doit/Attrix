@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield, Star } from "lucide-react";
 import { Section, SectionHeading, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { services, industries, stats, clientLogos, technologies, projects, testimonials, process } from "@/content/site";
+import heroTeam from "@/assets/hero-team.jpg";
+import heroAbstract from "@/assets/hero-abstract.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
