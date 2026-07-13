@@ -48,7 +48,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
-            const active = pathname === item.to || (item.to !== "/" && pathname.startsWith(item.to));
+            const active = pathname.startsWith(item.to);
             if (item.label === "Services") {
               return (
                 <div
