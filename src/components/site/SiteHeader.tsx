@@ -4,16 +4,11 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { services } from "@/content/site";
 
 const nav = [
-  { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
   { to: "/solutions", label: "Solutions" },
-  { to: "/products", label: "Products" },
-  { to: "/projects", label: "Projects" },
+  { to: "/projects", label: "Work" },
   { to: "/about", label: "About" },
-  { to: "/team", label: "Team" },
-  { to: "/courses", label: "Courses" },
-  { to: "/blog", label: "Blog" },
-  { to: "/careers", label: "Career" },
+  { to: "/blog", label: "Insights" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -53,7 +48,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
-            const active = pathname === item.to || (item.to !== "/" && pathname.startsWith(item.to));
+            const active = pathname.startsWith(item.to);
             if (item.label === "Services") {
               return (
                 <div

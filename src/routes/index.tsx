@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield, Star } from "lucide-react";
 import { Section, SectionHeading, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { services, industries, stats, clientLogos, technologies, projects, testimonials, process } from "@/content/site";
+import heroTeam from "@/assets/hero-team.jpg";
+import heroAbstract from "@/assets/hero-abstract.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -10,9 +12,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
       { property: "og:title", content: "Attrix Technologies — Digital Transformation, Automation & AI" },
       { property: "og:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://attrix.lovable.app/" },
+      { property: "og:image", content: `https://attrix.lovable.app${heroTeam}` },
+      { name: "twitter:image", content: `https://attrix.lovable.app${heroTeam}` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://attrix.lovable.app/" }],
   }),
   component: Home,
 });
@@ -68,7 +72,15 @@ function Home() {
           </div>
           <div className="lg:col-span-5">
             <div className="relative">
-              <ImagePlaceholder label="Product photography — team collaborating around a dashboard" aspect="4/5" />
+              <div className="relative overflow-hidden rounded-2xl border border-hairline shadow-elevated" style={{ aspectRatio: "4/5" }}>
+                <img
+                  src={heroTeam}
+                  alt="Attrix consultants reviewing analytics dashboards and code"
+                  width={1200}
+                  height={1504}
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <div className="absolute -bottom-6 -left-6 hidden w-64 rounded-xl border border-hairline bg-background p-4 shadow-elevated md:block">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-green-500" />
@@ -88,16 +100,27 @@ function Home() {
 
         {/* Logo cloud */}
         <div className="hairline-t">
-          <div className="container-page py-10">
-            <p className="text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Trusted by teams shipping serious software
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3 md:grid-cols-5">
-              {clientLogos.slice(0, 10).map((l) => (
-                <div key={l} className="text-center font-display text-sm font-semibold text-muted-foreground/70">
-                  {l}
-                </div>
-              ))}
+          <div className="container-page py-14">
+            <div className="flex flex-col items-center gap-2 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+                Trusted by 120+ teams
+              </span>
+              <p className="max-w-xl text-sm text-muted-foreground">
+                From venture-backed startups to Fortune 1000 operators — teams shipping serious software choose Attrix.
+              </p>
+            </div>
+            <div className="mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+              <div className="flex animate-[marquee_40s_linear_infinite] gap-3 whitespace-nowrap">
+                {[...clientLogos, ...clientLogos].map((l, i) => (
+                  <div
+                    key={`${l}-${i}`}
+                    className="inline-flex h-11 shrink-0 items-center justify-center rounded-lg border border-hairline bg-background px-5 font-display text-sm font-semibold tracking-tight text-ink-soft transition hover:border-ink/40 hover:text-ink"
+                  >
+                    {l}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -193,6 +216,20 @@ function Home() {
           </div>
         </div>
       </Section>
+
+      {/* VISUAL BAND */}
+      <section className="container-page py-10">
+        <div className="relative overflow-hidden rounded-3xl border border-hairline">
+          <img
+            src={heroAbstract}
+            alt="Isometric visualization of Attrix data, automation, and AI stack"
+            width={1600}
+            height={1008}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </section>
 
       {/* INDUSTRIES */}
       <Section>
