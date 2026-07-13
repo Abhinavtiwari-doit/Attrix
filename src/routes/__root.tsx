@@ -79,6 +79,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+const GOOGLE_VERIFICATION = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION as string | undefined;
+const BING_VERIFICATION = import.meta.env.VITE_BING_SITE_VERIFICATION as string | undefined;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -91,12 +95,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Attrix Technologies" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@attrix" },
       { property: "og:title", content: "Attrix Technologies — Digital Transformation, Automation & AI" },
       { name: "twitter:title", content: "Attrix Technologies — Digital Transformation, Automation & AI" },
       { property: "og:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
       { name: "twitter:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a4d831ef-42ee-432d-bd40-0c1e280f618d/id-preview-3b127ecf--3fcf1507-05c7-48bb-93ad-404ee4918b40.lovable.app-1783740602304.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a4d831ef-42ee-432d-bd40-0c1e280f618d/id-preview-3b127ecf--3fcf1507-05c7-48bb-93ad-404ee4918b40.lovable.app-1783740602304.png" },
+      ...(GOOGLE_VERIFICATION ? [{ name: "google-site-verification", content: GOOGLE_VERIFICATION }] : []),
+      ...(BING_VERIFICATION ? [{ name: "msvalidate.01", content: BING_VERIFICATION }] : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -116,9 +121,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "Attrix Technologies",
           description: "Technology consulting and digital solutions — automation, AI, cloud, CRM, and custom software.",
-          url: "/",
+          url: "https://attrix.lovable.app",
+          logo: "https://attrix.lovable.app/favicon.ico",
         }),
       },
+      ...(GA_ID
+        ? [
+            { src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`, async: true },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`,
+            },
+          ]
+        : []),
     ],
   }),
   shellComponent: RootShell,

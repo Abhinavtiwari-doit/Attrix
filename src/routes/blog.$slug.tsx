@@ -3,6 +3,8 @@ import { ArrowLeft } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { posts } from "@/content/site";
 
+const SITE_URL = "https://attrix.lovable.app";
+
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
     const post = posts.find((p) => p.slug === params.slug);
@@ -11,27 +13,68 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData }) => {
     const p = loaderData?.post;
-    const title = p ? `${p.title} — Attrix Blog` : "Article — Attrix Blog";
+    if (!p) {
+      return {
+        meta: [
+          { title: "Article not found — Attrix Blog" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
+    const url = `${SITE_URL}/blog/${p.slug}`;
+    const title = `${p.title} — Attrix Insights`;
+    const description = p.excerpt;
     return {
       meta: [
         { title },
-        { name: "description", content: p?.excerpt ?? "Article." },
-        { property: "og:title", content: title },
-        { property: "og:description", content: p?.excerpt ?? "" },
+        { name: "description", content: description },
+        { name: "author", content: p.author },
+        { name: "keywords", content: `${p.category}, Attrix Technologies` },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: p ? `/blog/${p.slug}` : "/blog" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "article:published_time", content: p.date },
+        { property: "article:author", content: p.author },
+        { property: "article:section", content: p.category },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
       ],
-      links: p ? [{ rel: "canonical", href: `/blog/${p.slug}` }] : [],
-      scripts: p ? [{
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: p.title,
-          author: p.author,
-          datePublished: p.date,
-        }),
-      }] : [],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: p.title,
+            description: p.excerpt,
+            author: { "@type": "Person", name: p.author },
+            datePublished: p.date,
+            dateModified: p.date,
+            mainEntityOfPage: { "@type": "WebPage", "@id": url },
+            articleSection: p.category,
+            publisher: {
+              "@type": "Organization",
+              name: "Attrix Technologies",
+              logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.ico` },
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+              { "@type": "ListItem", position: 2, name: "Insights", item: `${SITE_URL}/blog` },
+              { "@type": "ListItem", position: 3, name: p.title, item: url },
+            ],
+          }),
+        },
+      ],
     };
   },
   notFoundComponent: () => <Section><h1 className="text-3xl font-bold">Post not found</h1></Section>,
