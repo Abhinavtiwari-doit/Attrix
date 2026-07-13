@@ -12,9 +12,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
       { property: "og:title", content: "Attrix Technologies — Digital Transformation, Automation & AI" },
       { property: "og:description", content: "Enterprise-grade consulting for automation, AI, cloud, CRM, and custom software. Trusted by 120+ teams across 40+ countries." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://attrix.lovable.app/" },
+      { property: "og:image", content: `https://attrix.lovable.app${heroTeam}` },
+      { name: "twitter:image", content: `https://attrix.lovable.app${heroTeam}` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://attrix.lovable.app/" }],
   }),
   component: Home,
 });
@@ -214,6 +216,20 @@ function Home() {
           </div>
         </div>
       </Section>
+
+      {/* VISUAL BAND */}
+      <section className="container-page py-10">
+        <div className="relative overflow-hidden rounded-3xl border border-hairline">
+          <img
+            src={heroAbstract}
+            alt="Isometric visualization of Attrix data, automation, and AI stack"
+            width={1600}
+            height={1008}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </section>
 
       {/* INDUSTRIES */}
       <Section>
