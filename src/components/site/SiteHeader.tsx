@@ -5,9 +5,9 @@ import { services } from "@/content/site";
 
 const nav = [
   { to: "/services", label: "Services" },
-  { to: "/solutions", label: "Solutions" },
   { to: "/projects", label: "Work" },
-  { to: "/about", label: "About" },
+  { to: "/team", label: "Team" },
+  { to: "/pricing", label: "Pricing" },
   { to: "/blog", label: "Insights" },
   { to: "/contact", label: "Contact" },
 ] as const;
