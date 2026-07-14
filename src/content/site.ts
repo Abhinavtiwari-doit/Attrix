@@ -213,16 +213,79 @@ export const courses = [
     blurb: "From idea to launched product using FlutterFlow, Xano, and Bubble." },
 ];
 
-export const team = [
-  { name: "Rohan Verma", role: "Founder & CEO", dept: "Leadership" },
-  { name: "Meera Kapoor", role: "Chief AI Officer", dept: "Leadership" },
-  { name: "Karim Al-Farsi", role: "Head of Cloud", dept: "Leadership" },
-  { name: "Abhishek Tiwari", role: "Business Operations Lead — MBA, IIT Patna", dept: "Leadership",
-    bio: "Business operations leader specialising in remote team management, SOPs, workflow automation, and revenue growth. 40% revenue lift, 35% operational efficiency gains, and 15+ person remote teams." },
-  { name: "Abhinav Tiwari", role: "Tech Operations & Automation Manager", dept: "Automation",
-    bio: "Automation, CRM, and data engineer working across Zoho Deluge, Pabbly, Python, AWS, and Shopify. Builds AI systems, dashboards, and full-stack integrations end-to-end." },
-  { name: "Jaya Pratha J", role: "Zoho & Full-Stack Developer", dept: "Engineering",
-    bio: "Zoho Creator, CRM, Books, Desk, Recruit, and Deluge specialist with 3+ years shipping ERP-style client apps, integrations, and workflow automations." },
+export type TeamMember = {
+  name: string;
+  role: string;
+  dept: string;
+  location?: string;
+  bio?: string;
+  experience?: string[];
+  skillBars?: { label: string; value: number; color?: string }[];
+  tags?: string[];
+  links?: { linkedin?: string; portfolio?: string; github?: string };
+};
+
+export const team: TeamMember[] = [
+  {
+    name: "Abhinav Tiwari",
+    role: "Founder · Automation & Data Engineer",
+    dept: "Leadership",
+    location: "Panipat, Haryana · Remote",
+    bio: "AWS certified (92%), 43 Salesforce Trailhead badges with 9,100+ points. Leads automation strategy, Zoho consulting, ML pipelines and cloud architecture at Attrix. Shipped 40+ projects and mentored 70+ students in data science and cybersecurity.",
+    experience: [
+      "Tech Ops Manager — The Healing Wiz (Dec 2025–Present)",
+      "Shopify Developer — Eternity Capital Corp (Jul 2024–Dec 2025)",
+      "Data Science Intern — CodSoft (Aug–Sep 2024, 88–92% accuracy)",
+      "Malware Analyst Tutor — Superprof (Feb–Apr 2024)",
+      "Zoho Developer — FabLearner (May 2022–May 2023)",
+    ],
+    skillBars: [
+      { label: "Python & ML", value: 95 },
+      { label: "Zoho / Deluge", value: 90 },
+      { label: "AWS / Cloud", value: 88 },
+    ],
+    tags: ["Python", "AWS", "Zoho Deluge", "Pabbly", "ML/AI", "SQL", "Power BI"],
+    links: { linkedin: "#", portfolio: "#" },
+  },
+  {
+    name: "Jaya Pratha J",
+    role: "Full Stack & Zoho Developer",
+    dept: "Engineering",
+    location: "Chennai, Tamil Nadu · Remote",
+    bio: "3+ years of hands-on Zoho development across CRM, Books, Desk, Recruit, Forms, Inventory and Creator. Specialises in API integration, Deluge scripting and custom third-party app connections. Currently delivering enterprise Zoho solutions at Certify Technologies.",
+    experience: [
+      "Zoho Developer — Certify Technologies (Oct 2025–Present)",
+      "Zoho Developer — AORBORC Technologies (Apr 2023–Apr 2025, 2 yrs)",
+      "Full Stack & API Integration Specialist",
+    ],
+    skillBars: [
+      { label: "Zoho Ecosystem", value: 96 },
+      { label: "Deluge Scripting", value: 93 },
+      { label: "API Integration", value: 90 },
+    ],
+    tags: ["Zoho CRM", "Zoho Creator", "Deluge", "API Integration", "Zoho Books", "Zoho Desk"],
+    links: { linkedin: "#" },
+  },
+  {
+    name: "Abhishek Tiwari",
+    role: "Business Operations Leader",
+    dept: "Leadership",
+    location: "Mumbai, Maharashtra · Remote",
+    bio: "Executive MBA from IIT Patna. Leads remote teams of 15+, drives revenue strategy, SOP design and process optimisation. Delivered 40% revenue growth and 35% operational efficiency improvements across multiple client engagements.",
+    experience: [
+      "Manager/Team Lead — AB Kids Life Coach (Aug 2023–Present)",
+      "Talent Acquisition Exec — Alpha Silicon, USA (50+ IT placements)",
+      "Account Executive — Blissfull Prosperity Solutions, Mumbai",
+      "Operations Intern — MedPay LLC (1,000+ orders, 98% accuracy)",
+    ],
+    skillBars: [
+      { label: "Operations Leadership", value: 95 },
+      { label: "SOP & KPI Design", value: 92 },
+      { label: "Financial Reporting", value: 88 },
+    ],
+    tags: ["Operations", "CRM Systems", "SOP Design", "MIS Reports", "KPI Strategy", "Tally Prime"],
+    links: { linkedin: "#" },
+  },
   { name: "Anya Sørensen", role: "Head of Design", dept: "Design" },
   { name: "Lucas Bernard", role: "Principal Engineer", dept: "Engineering" },
   { name: "Priya Nair", role: "Automation Lead", dept: "Automation" },
@@ -230,6 +293,59 @@ export const team = [
   { name: "Hana Ito", role: "ML Engineer", dept: "AI" },
   { name: "Elias Weiss", role: "Marketing Director", dept: "Marketing" },
   { name: "Sana Ahmed", role: "Senior Project Manager", dept: "Delivery" },
+];
+
+export const pricingPlans = [
+  {
+    tag: "STARTER",
+    name: "Hourly Support",
+    price: "₹1,500",
+    unit: "per hour · minimum 5 hours",
+    features: [
+      "Bug fixes & small changes",
+      "Zoho configuration tweaks",
+      "Automation adjustments",
+      "Tech advisory sessions",
+      "Detailed time logs with invoice",
+      "No long-term commitment",
+    ],
+    cta: "Book Hours",
+    highlight: false,
+  },
+  {
+    tag: "MOST POPULAR",
+    name: "Project Contract",
+    price: "₹1,200",
+    unit: "per hour · scoped project",
+    features: [
+      "Full project scoping & roadmap",
+      "Dedicated team assigned",
+      "Weekly progress reports",
+      "QA & testing included",
+      "Documentation & handover",
+      "30-day post-launch support",
+      "Team training session included",
+    ],
+    cta: "Start a Project",
+    highlight: true,
+  },
+  {
+    tag: "RETAINER",
+    name: "Monthly Retainer",
+    price: "₹999",
+    unit: "per hour · 40 hours/month min",
+    features: [
+      "Priority response (<4 hrs)",
+      "Dedicated account manager",
+      "Ongoing development & support",
+      "Monthly strategy review call",
+      "Rollover unused hours",
+      "Best rate guaranteed",
+      "Cancel with 14 days notice",
+    ],
+    cta: "Get a Quote",
+    highlight: false,
+  },
 ];
 
 export const skills: { category: string; items: string[] }[] = [
