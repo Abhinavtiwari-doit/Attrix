@@ -36,6 +36,7 @@ export function SiteHeader() {
   useEffect(() => {
     setOpen(false);
     setMegaOpen(false);
+    setProductsOpen(false);
   }, [pathname]);
 
   return (
