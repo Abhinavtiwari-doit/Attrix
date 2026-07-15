@@ -1,10 +1,17 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { services } from "@/content/site";
+
+const productLinks = [
+  { to: "/products", label: "Marketplace", desc: "SaaS, dashboards & plugins we ship" },
+  { to: "/tools", label: "Free tools", desc: "Utilities for teams and builders" },
+  { to: "/courses", label: "Courses", desc: "Learn automation, AI & cloud" },
+] as const;
 
 const nav = [
   { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/projects", label: "Work" },
   { to: "/team", label: "Team" },
   { to: "/pricing", label: "Pricing" },
