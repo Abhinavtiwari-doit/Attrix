@@ -107,6 +107,45 @@ export function SiteHeader() {
                 </div>
               );
             }
+            if (item.label === "Products") {
+              return (
+                <div
+                  key={item.to}
+                  className="relative"
+                  onMouseEnter={() => setProductsOpen(true)}
+                  onMouseLeave={() => setProductsOpen(false)}
+                >
+                  <Link
+                    to={item.to}
+                    className={`inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium transition ${
+                      active ? "text-ink" : "text-ink-soft hover:text-ink"
+                    }`}
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3 w-3" />
+                  </Link>
+                  {productsOpen && (
+                    <div className="absolute left-1/2 top-full z-50 w-[360px] -translate-x-1/2 pt-2">
+                      <div className="rounded-2xl border border-hairline bg-background p-4 shadow-elevated">
+                        <p className="eyebrow mb-3">Products</p>
+                        <div className="flex flex-col">
+                          {productLinks.map((p) => (
+                            <Link
+                              key={p.to}
+                              to={p.to}
+                              className="rounded-lg p-3 transition hover:bg-surface"
+                            >
+                              <p className="text-sm font-semibold">{p.label}</p>
+                              <p className="mt-0.5 text-xs text-muted-foreground">{p.desc}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            }
             return (
               <Link
                 key={item.to}
