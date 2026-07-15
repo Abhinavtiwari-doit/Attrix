@@ -64,8 +64,8 @@ function DetailedCard({ m }: { m: TeamMember }) {
 }
 
 function TeamPage() {
-  const featured = team.filter((m) => m.bio && m.skillBars);
-  const rest = team.filter((m) => !(m.bio && m.skillBars));
+  const featured = team.filter((m) => m.bio);
+  const rest = team.filter((m) => !m.bio);
   const depts = Array.from(new Set(rest.map((m) => m.dept)));
   return (
     <>
