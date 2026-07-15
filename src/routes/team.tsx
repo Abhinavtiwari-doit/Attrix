@@ -38,21 +38,6 @@ function DetailedCard({ m }: { m: TeamMember }) {
           ))}
         </ul>
       )}
-      {m.skillBars && (
-        <div className="mt-6 space-y-3">
-          {m.skillBars.map((s) => (
-            <div key={s.label}>
-              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                <span>{s.label}</span>
-                <span>{s.value}%</span>
-              </div>
-              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-surface">
-                <div className="h-full rounded-full bg-gradient-to-r from-brand to-primary" style={{ width: `${s.value}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
       {m.tags && (
         <div className="mt-6 flex flex-wrap gap-1.5">
           {m.tags.map((t) => (
@@ -79,8 +64,8 @@ function DetailedCard({ m }: { m: TeamMember }) {
 }
 
 function TeamPage() {
-  const featured = team.filter((m) => m.bio && m.skillBars);
-  const rest = team.filter((m) => !(m.bio && m.skillBars));
+  const featured = team.filter((m) => m.bio);
+  const rest = team.filter((m) => !m.bio);
   const depts = Array.from(new Set(rest.map((m) => m.dept)));
   return (
     <>
