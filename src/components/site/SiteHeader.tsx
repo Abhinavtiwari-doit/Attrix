@@ -181,13 +181,27 @@ export function SiteHeader() {
         <div className="border-t border-hairline bg-background lg:hidden">
           <div className="container-page flex flex-col py-3">
             {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="rounded-md px-2 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface hover:text-ink"
-              >
-                {item.label}
-              </Link>
+              <div key={item.to}>
+                <Link
+                  to={item.to}
+                  className="block rounded-md px-2 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface hover:text-ink"
+                >
+                  {item.label}
+                </Link>
+                {item.label === "Products" && (
+                  <div className="ml-3 flex flex-col border-l border-hairline pl-3">
+                    {productLinks.map((p) => (
+                      <Link
+                        key={p.to}
+                        to={p.to}
+                        className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:text-ink"
+                      >
+                        {p.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               to="/contact"
