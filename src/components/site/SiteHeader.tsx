@@ -1,10 +1,17 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { services } from "@/content/site";
+
+const productLinks = [
+  { to: "/products", label: "Marketplace", desc: "SaaS, dashboards & plugins we ship" },
+  { to: "/tools", label: "Free tools", desc: "Utilities for teams and builders" },
+  { to: "/courses", label: "Courses", desc: "Learn automation, AI & cloud" },
+] as const;
 
 const nav = [
   { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/projects", label: "Work" },
   { to: "/team", label: "Team" },
   { to: "/pricing", label: "Pricing" },
@@ -16,6 +23,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
@@ -28,6 +36,7 @@ export function SiteHeader() {
   useEffect(() => {
     setOpen(false);
     setMegaOpen(false);
+    setProductsOpen(false);
   }, [pathname]);
 
   return (
@@ -98,6 +107,45 @@ export function SiteHeader() {
                 </div>
               );
             }
+            if (item.label === "Products") {
+              return (
+                <div
+                  key={item.to}
+                  className="relative"
+                  onMouseEnter={() => setProductsOpen(true)}
+                  onMouseLeave={() => setProductsOpen(false)}
+                >
+                  <Link
+                    to={item.to}
+                    className={`inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium transition ${
+                      active ? "text-ink" : "text-ink-soft hover:text-ink"
+                    }`}
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3 w-3" />
+                  </Link>
+                  {productsOpen && (
+                    <div className="absolute left-1/2 top-full z-50 w-[360px] -translate-x-1/2 pt-2">
+                      <div className="rounded-2xl border border-hairline bg-background p-4 shadow-elevated">
+                        <p className="eyebrow mb-3">Products</p>
+                        <div className="flex flex-col">
+                          {productLinks.map((p) => (
+                            <Link
+                              key={p.to}
+                              to={p.to}
+                              className="rounded-lg p-3 transition hover:bg-surface"
+                            >
+                              <p className="text-sm font-semibold">{p.label}</p>
+                              <p className="mt-0.5 text-xs text-muted-foreground">{p.desc}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            }
             return (
               <Link
                 key={item.to}
@@ -133,13 +181,27 @@ export function SiteHeader() {
         <div className="border-t border-hairline bg-background lg:hidden">
           <div className="container-page flex flex-col py-3">
             {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="rounded-md px-2 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface hover:text-ink"
-              >
-                {item.label}
-              </Link>
+              <div key={item.to}>
+                <Link
+                  to={item.to}
+                  className="block rounded-md px-2 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface hover:text-ink"
+                >
+                  {item.label}
+                </Link>
+                {item.label === "Products" && (
+                  <div className="ml-3 flex flex-col border-l border-hairline pl-3">
+                    {productLinks.map((p) => (
+                      <Link
+                        key={p.to}
+                        to={p.to}
+                        className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:text-ink"
+                      >
+                        {p.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               to="/contact"
