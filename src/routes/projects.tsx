@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { projects } from "@/content/site";
 

@@ -46,15 +46,20 @@ function DetailedCard({ m }: { m: TeamMember }) {
         </div>
       )}
       <div className="mt-6 grid grid-cols-2 gap-2">
-        <a href={m.links?.linkedin ?? "#"} className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-hairline text-xs hover:bg-surface">
+        <a href={m.links?.linkedin ?? "#"} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-hairline text-xs hover:bg-surface">
           <Linkedin className="h-3.5 w-3.5" /> LinkedIn
         </a>
         {m.links?.portfolio ? (
-          <a href={m.links.portfolio} className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-primary text-xs font-semibold text-primary-foreground">
+          <a href={m.links.portfolio} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-primary text-xs font-semibold text-primary-foreground">
             <Globe className="h-3.5 w-3.5" /> Portfolio
           </a>
         ) : (
-          <a href="#" className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-hairline text-xs hover:bg-surface">
+          <a href={m.links?.github ?? "#"} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-hairline text-xs hover:bg-surface">
+            <Github className="h-3.5 w-3.5" /> GitHub
+          </a>
+        )}
+        {m.links?.portfolio && m.links?.github && (
+          <a href={m.links.github} target="_blank" rel="noopener noreferrer" className="col-span-2 inline-flex h-9 items-center justify-center gap-1.5 rounded-md border border-hairline text-xs hover:bg-surface">
             <Github className="h-3.5 w-3.5" /> GitHub
           </a>
         )}
