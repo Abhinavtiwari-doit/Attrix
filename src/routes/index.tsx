@@ -347,15 +347,15 @@ function Home() {
       {/* PROCESS */}
       <Section>
         <SectionHeading eyebrow="How we work" title="A seven-step process, refined over 120+ engagements." />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p) => (
-            <div key={p.step} className="rounded-xl border border-hairline bg-background p-6">
-              <p className="font-mono text-xs font-semibold text-brand">{p.step}</p>
-              <h3 className="mt-3 text-base font-semibold">{p.title}</h3>
+            <div key={p.step} className="card-lift group rounded-xl border border-hairline bg-background p-6">
+              <p className="font-mono text-xs font-semibold text-brand transition-transform duration-300 group-hover:translate-x-1">{p.step}</p>
+              <h3 className="mt-3 text-base font-semibold transition-colors duration-300 group-hover:text-brand">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* CTA */}
@@ -370,13 +370,14 @@ function Home() {
             />
           </div>
           <div className="flex flex-wrap gap-3 md:justify-end">
-            <Link to="/contact" className="inline-flex h-12 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-semibold text-cta-foreground hover:brightness-105">
-              Book a consultation <ArrowRight className="h-4 w-4" />
+            <Link to="/contact" className="shine group inline-flex h-12 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-semibold text-cta-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105">
+              Book a consultation <ArrowRight className="icon-nudge h-4 w-4" />
             </Link>
-            <Link to="/projects" className="inline-flex h-12 items-center gap-2 rounded-lg border border-white/20 px-6 text-sm font-semibold text-white hover:bg-white/10">
+            <Link to="/projects" className="inline-flex h-12 items-center gap-2 rounded-lg border border-white/20 px-6 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
               See what we've shipped
             </Link>
           </div>
+        </div>
         </div>
       </Section>
     </>
