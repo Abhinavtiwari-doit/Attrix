@@ -115,6 +115,8 @@ export type Project = {
   summary: string;
   tech: string[];
   metrics: { k: string; v: string }[];
+  /** YouTube (or any) recording of the project walkthrough */
+  demoUrl?: string;
 };
 
 export const projects: Project[] = [
