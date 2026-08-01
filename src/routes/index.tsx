@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield, Star } from "lucide-react";
-import { Section, SectionHeading, ImagePlaceholder, Pill } from "@/components/site/primitives";
+import { Section, SectionHeading, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
 import { services, industries, stats, clientLogos, technologies, projects, testimonials, process } from "@/content/site";
 import heroTeam from "@/assets/hero-team.jpg";
 import heroAbstract from "@/assets/hero-abstract.jpg";
@@ -139,7 +139,7 @@ function Home() {
             All services <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Reveal stagger className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {services.slice(0, 8).map((s) => {
             const Icon = serviceIcons[s.slug] ?? Zap;
             return (
@@ -150,20 +150,21 @@ function Home() {
                 className="card-lift group rounded-2xl border border-hairline bg-background p-6"
               >
                 <div className="flex items-center justify-between">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-surface text-brand transition group-hover:bg-brand group-hover:text-brand-foreground">
+                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-surface text-brand transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-brand-foreground">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{s.tag}</span>
                 </div>
-                <h3 className="mt-6 text-lg font-semibold">{s.name}</h3>
+                <h3 className="mt-6 text-lg font-semibold transition-colors duration-300 group-hover:text-brand">{s.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.summary}</p>
                 <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-ink">
-                  Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+                  Learn more <ArrowUpRight className="icon-nudge-up h-3.5 w-3.5" />
                 </span>
               </Link>
             );
           })}
-        </div>
+        </Reveal>
+
       </Section>
 
       {/* WHY CHOOSE */}
