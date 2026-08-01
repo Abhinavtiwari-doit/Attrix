@@ -292,40 +292,46 @@ function Home() {
             All projects <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <Reveal stagger className="mt-12 grid gap-6 md:grid-cols-3">
           {projects.slice(0, 3).map((p) => (
             <Link key={p.slug} to="/projects/$slug" params={{ slug: p.slug }} className="card-lift group rounded-2xl border border-hairline bg-background p-3">
               <ImagePlaceholder label={`Case study cover — ${p.name}`} aspect="4/3" />
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <Pill>{p.industry}</Pill>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                  <ArrowUpRight className="icon-nudge-up h-4 w-4 text-muted-foreground group-hover:text-brand" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">{p.name}</h3>
+                <h3 className="mt-4 text-lg font-semibold transition-colors duration-300 group-hover:text-brand">{p.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {p.tech.map((t) => (
-                    <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft">{t}</span>
+                    <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft transition-colors duration-300 hover:bg-brand/10 hover:text-brand">{t}</span>
                   ))}
                 </div>
               </div>
             </Link>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* TESTIMONIALS */}
       <Section tone="surface">
         <SectionHeading eyebrow="Voices" title="What our clients say." />
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <Reveal stagger className="mt-12 grid gap-4 md:grid-cols-2">
           {testimonials.map((t) => (
-            <figure key={t.name} className="rounded-2xl border border-hairline bg-background p-8">
+            <figure key={t.name} className="card-lift group rounded-2xl border border-hairline bg-background p-8">
               <div className="flex gap-0.5 text-cta">
-                {Array.from({ length: t.rating }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star
+                    key={i}
+                    style={{ transitionDelay: `${i * 60}ms` }}
+                    className="h-4 w-4 fill-current transition-transform duration-300 group-hover:scale-125"
+                  />
+                ))}
               </div>
               <blockquote className="mt-4 text-lg leading-relaxed">"{t.quote}"</blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-sm font-bold">
+                <div className="grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-sm font-bold transition-colors duration-300 group-hover:bg-brand group-hover:text-brand-foreground">
                   {t.name.split(" ").map((n) => n[0]).join("")}
                 </div>
                 <div>
@@ -335,7 +341,7 @@ function Home() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* PROCESS */}
