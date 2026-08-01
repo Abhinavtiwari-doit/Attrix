@@ -176,21 +176,22 @@ function Home() {
               title="Outcomes, not deliverables."
               subtitle="We're paid on the business metric moving — not on lines of code or pretty slides."
             />
-            <ul className="mt-8 space-y-4">
+            <Reveal stagger as="div" className="mt-8 space-y-4">
               {[
                 "Senior consultants only — no juniors on your account",
                 "Fixed-scope engagements with weekly reviewable output",
                 "Fluent across automation, AI, cloud, CRM, and product",
                 "Handover documentation your team can actually maintain",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-brand text-brand-foreground">
+                <div key={item} className="group flex items-start gap-3">
+                  <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-brand text-brand-foreground transition-transform duration-300 group-hover:scale-125">
                     <Check className="h-3 w-3" />
                   </span>
-                  <span className="text-sm">{item}</span>
-                </li>
+                  <span className="text-sm transition-colors duration-300 group-hover:text-brand">{item}</span>
+                </div>
               ))}
-            </ul>
+            </Reveal>
+
           </div>
           <div className="lg:col-span-7">
             <div className="grid grid-cols-2 gap-4">
