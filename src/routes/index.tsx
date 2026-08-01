@@ -222,16 +222,17 @@ function Home() {
 
       {/* VISUAL BAND */}
       <section className="container-page py-10">
-        <div className="relative overflow-hidden rounded-3xl border border-hairline">
+        <Reveal className="group relative overflow-hidden rounded-3xl border border-hairline">
           <img
             src={heroAbstract}
             alt="Isometric visualization of Attrix data, automation, and AI stack"
             width={1600}
             height={1008}
             loading="lazy"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           />
-        </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+        </Reveal>
       </section>
 
       {/* INDUSTRIES */}
