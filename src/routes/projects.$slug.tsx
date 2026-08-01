@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { projects } from "@/content/site";
 
@@ -80,6 +80,16 @@ function ProjectDetail() {
           <Pill>{project.industry}</Pill>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold md:text-5xl">{project.name}</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{project.summary}</p>
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+            >
+              <Play className="h-4 w-4" /> Watch demo video
+            </a>
+          )}
         </div>
         <div className="mt-10">
           <ImagePlaceholder label={`${project.name} — hero`} aspect="16/9" />

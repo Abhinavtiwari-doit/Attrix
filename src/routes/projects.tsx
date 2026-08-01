@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { projects } from "@/content/site";
 
@@ -86,7 +86,8 @@ function ProjectsPage() {
         ) : (
           <div className="grid gap-6">
             {filtered.map((p, i) => (
-              <Link key={p.slug} to="/projects/$slug" params={{ slug: p.slug }}
+              <div key={p.slug} className="relative">
+                <Link to="/projects/$slug" params={{ slug: p.slug }}
                 className={`card-lift group grid gap-6 rounded-3xl border border-hairline bg-background p-6 md:grid-cols-12 md:p-8 ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}>
                 <div className="md:col-span-6">
                   <ImagePlaceholder label={`${p.name} — cover`} aspect="4/3" />
@@ -114,8 +115,20 @@ function ProjectsPage() {
                       <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft">{t}</span>
                     ))}
                   </div>
+                  {p.demoUrl && <div className="h-11" />}
                 </div>
-              </Link>
+                </Link>
+                {p.demoUrl && (
+                  <a
+                    href={p.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-6 right-6 inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-3.5 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90 md:bottom-8 md:right-8"
+                  >
+                    <Play className="h-3.5 w-3.5" /> Watch demo
+                  </a>
+                )}
+              </div>
             ))}
           </div>
         )}
