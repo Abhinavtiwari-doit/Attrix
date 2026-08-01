@@ -175,7 +175,7 @@ export function SiteHeader() {
                   </button>
                   {productsOpen && (
                     <div role="menu" className="absolute left-1/2 top-full z-50 w-[360px] -translate-x-1/2 pt-2">
-                      <div className="rounded-2xl border border-hairline bg-background p-4 shadow-elevated">
+                      <div className="animate-fade-up rounded-2xl border border-hairline bg-background p-4 shadow-elevated">
                         <p className="eyebrow mb-3">Products</p>
                         <div className="flex flex-col">
                           {productLinks.map((p) => (
@@ -183,9 +183,9 @@ export function SiteHeader() {
                               key={p.to}
                               to={p.to}
                               role="menuitem"
-                              className="rounded-lg p-3 transition hover:bg-surface focus:bg-surface focus:outline-none"
+                              className="group rounded-lg p-3 transition-all duration-300 hover:translate-x-1 hover:bg-surface focus:bg-surface focus:outline-none"
                             >
-                              <p className="text-sm font-semibold">{p.label}</p>
+                              <p className="text-sm font-semibold transition-colors group-hover:text-brand">{p.label}</p>
                               <p className="mt-0.5 text-xs text-muted-foreground">{p.desc}</p>
                             </Link>
                           ))}
@@ -200,8 +200,8 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition ${
-                  active ? "text-ink" : "text-ink-soft hover:text-ink"
+                className={`relative inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors duration-300 after:absolute after:bottom-1 after:left-3 after:right-3 after:h-px after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100 ${
+                  active ? "text-ink after:scale-x-100" : "text-ink-soft hover:text-ink"
                 }`}
               >
                 {item.label}
@@ -213,15 +213,15 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             to="/contact"
-            className="hidden h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 md:inline-flex"
+            className="shine group hidden h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-soft md:inline-flex"
           >
-            Start a project <ArrowRight className="h-3.5 w-3.5" />
+            Start a project <ArrowRight className="icon-nudge h-3.5 w-3.5" />
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="grid h-9 w-9 place-items-center rounded-md border border-hairline lg:hidden"
+            className="grid h-9 w-9 place-items-center rounded-md border border-hairline transition-all duration-300 hover:border-brand/50 hover:bg-surface active:scale-90 lg:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
