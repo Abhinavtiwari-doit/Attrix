@@ -194,28 +194,28 @@ function Home() {
 
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-hairline bg-background p-6">
+            <Reveal stagger className="grid grid-cols-2 gap-4">
+              <div className="hover-lift rounded-2xl border border-hairline bg-background p-6">
                 <p className="eyebrow">Before</p>
                 <p className="mt-3 font-display text-3xl font-bold text-ink-soft line-through decoration-cta/60">40 min</p>
                 <p className="text-xs text-muted-foreground">Manual patient intake</p>
               </div>
-              <div className="rounded-2xl border border-brand/40 bg-background p-6 shadow-soft">
+              <div className="hover-lift rounded-2xl border border-brand/40 bg-background p-6 shadow-soft">
                 <p className="eyebrow">After</p>
                 <p className="mt-3 font-display text-3xl font-bold text-brand">9 min</p>
                 <p className="text-xs text-muted-foreground">Automated intake</p>
               </div>
-              <div className="rounded-2xl border border-hairline bg-background p-6">
+              <div className="hover-lift rounded-2xl border border-hairline bg-background p-6">
                 <p className="eyebrow">Before</p>
                 <p className="mt-3 font-display text-3xl font-bold text-ink-soft line-through decoration-cta/60">4 tools</p>
                 <p className="text-xs text-muted-foreground">Fragmented ops stack</p>
               </div>
-              <div className="rounded-2xl border border-brand/40 bg-background p-6 shadow-soft">
+              <div className="hover-lift rounded-2xl border border-brand/40 bg-background p-6 shadow-soft">
                 <p className="eyebrow">After</p>
                 <p className="mt-3 font-display text-3xl font-bold text-brand">1 console</p>
                 <p className="text-xs text-muted-foreground">Unified operations</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </Section>
