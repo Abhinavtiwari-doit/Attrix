@@ -125,12 +125,12 @@ export function ImagePlaceholder({
     <div
       style={{ aspectRatio: aspect }}
       className={cn(
-        "relative w-full overflow-hidden rounded-xl border border-hairline bg-gradient-to-br from-surface to-surface-muted",
+        "zoom-media relative w-full overflow-hidden rounded-xl border border-hairline bg-gradient-to-br from-surface to-surface-muted transition-colors duration-500 group-hover:border-brand/40",
         className,
       )}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,color-mix(in_oklch,var(--color-brand)_10%,transparent),transparent_50%)]" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center">
+      <div className="animate-blob absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,color-mix(in_oklch,var(--color-brand)_10%,transparent),transparent_50%)]" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center transition-transform duration-700 group-hover:scale-[1.03]">
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           Image
         </span>
@@ -142,7 +142,7 @@ export function ImagePlaceholder({
 
 export function Pill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-hairline bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
+    <span className="inline-flex items-center rounded-full border border-hairline bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand">
       {children}
     </span>
   );
