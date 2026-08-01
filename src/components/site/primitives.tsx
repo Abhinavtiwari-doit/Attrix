@@ -1,16 +1,68 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+
+/** Fades + slides content in the first time it scrolls into view. */
+export function Reveal({
+  children,
+  className,
+  stagger = false,
+  as: Tag = "div",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  stagger?: boolean;
+  as?: "div" | "section" | "li" | "span";
+  delay?: number;
+}) {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <Tag
+      ref={ref as never}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      className={cn(stagger ? "stagger-children" : "reveal", visible && "is-visible", className)}
+    >
+      {children}
+    </Tag>
+  );
+}
 
 export function Section({
   children,
   className,
   id,
   tone = "default",
+  reveal = true,
 }: {
   children: ReactNode;
   className?: string;
   id?: string;
   tone?: "default" | "surface" | "ink";
+  reveal?: boolean;
 }) {
   const tones = {
     default: "bg-background",
@@ -19,7 +71,11 @@ export function Section({
   };
   return (
     <section id={id} className={cn("py-20 md:py-28", tones[tone], className)}>
-      <div className="container-page">{children}</div>
+      {reveal ? (
+        <Reveal className="container-page">{children}</Reveal>
+      ) : (
+        <div className="container-page">{children}</div>
+      )}
     </section>
   );
 }
