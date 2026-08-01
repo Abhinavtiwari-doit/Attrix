@@ -242,7 +242,7 @@ function Home() {
           title="Domain fluency across nine sectors."
           subtitle="We arrive on day one already speaking your business — not spending three months learning it."
         />
-        <div className="mt-12 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+        <Reveal stagger className="mt-12 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
           {industries.map((i) => (
             <Link
               key={i.slug}
@@ -251,13 +251,13 @@ function Home() {
               className="card-lift group flex items-center justify-between rounded-xl border border-hairline bg-background p-5"
             >
               <div>
-                <p className="text-base font-semibold">{i.name}</p>
+                <p className="text-base font-semibold transition-colors duration-300 group-hover:text-brand">{i.name}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{i.blurb}</p>
               </div>
-              <ArrowUpRight className="ml-3 h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-brand" />
+              <ArrowUpRight className="icon-nudge-up ml-3 h-4 w-4 shrink-0 text-muted-foreground group-hover:text-brand" />
             </Link>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* TECHNOLOGY ECOSYSTEM */}
@@ -268,20 +268,20 @@ function Home() {
           subtitle="We standardize on proven stacks — and integrate cleanly with whatever else you're running."
           invert
         />
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <Reveal stagger className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {Object.entries(technologies).map(([category, items]) => (
-            <div key={category} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div key={category} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.07]">
               <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">{category}</p>
               <ul className="mt-4 flex flex-wrap gap-1.5">
                 {items.map((t) => (
-                  <li key={t} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-white/85">
+                  <li key={t} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-white/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15">
                     {t}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* PROJECTS */}
