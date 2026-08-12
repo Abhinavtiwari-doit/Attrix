@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield } from "lucide-react";
+import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
+import { VideoTutorials } from "@/components/site/VideoTutorials";
 import { Section, SectionHeading, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
-import { services, industries, stats, clientLogos, technologies, projects, testimonials, process } from "@/content/site";
+import { services, industries, stats, clientLogos, technologies, projects, process } from "@/content/site";
 import heroTeam from "@/assets/hero-team.jpg";
 import heroAbstract from "@/assets/hero-abstract.jpg";
 
@@ -317,32 +319,11 @@ function Home() {
       {/* TESTIMONIALS */}
       <Section tone="surface">
         <SectionHeading eyebrow="Voices" title="What our clients say." />
-        <Reveal stagger className="mt-12 grid gap-4 md:grid-cols-2">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="card-lift group rounded-2xl border border-hairline bg-background p-8">
-              <div className="flex gap-0.5 text-cta">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    style={{ transitionDelay: `${i * 60}ms` }}
-                    className="h-4 w-4 fill-current transition-transform duration-300 group-hover:scale-125"
-                  />
-                ))}
-              </div>
-              <blockquote className="mt-4 text-lg leading-relaxed">"{t.quote}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-sm font-bold transition-colors duration-300 group-hover:bg-brand group-hover:text-brand-foreground">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
-        </Reveal>
+        <TestimonialsCarousel />
       </Section>
+
+      {/* VIDEO WALKTHROUGHS */}
+      <VideoTutorials tone="default" />
 
       {/* PROCESS */}
       <Section>
