@@ -1,3 +1,9 @@
+import blogAutomation from "@/assets/blog-automation.jpg";
+import blogAi from "@/assets/blog-ai.jpg";
+import blogCloud from "@/assets/blog-cloud.jpg";
+import blogCrm from "@/assets/blog-crm.jpg";
+import blogDevelopment from "@/assets/blog-development.jpg";
+
 export const site = {
   name: "Attrix Technologies",
   tagline: "Transforming businesses through technology",
@@ -123,6 +129,7 @@ export const projects: Project[] = [
   { slug: "vireo-patient-intake", name: "Vireo Health — Patient Intake Platform", industry: "Healthcare", category: "Product Engineering",
     summary: "A HIPAA-aligned intake system that shrunk onboarding from 40 minutes to 9.",
     tech: ["React", "Supabase", "n8n", "AWS"],
+    demoUrl: "https://www.youtube.com/@attrix",
     metrics: [{ k: "Turnaround", v: "-62%" }, { k: "Staff hours saved / wk", v: "180" }, { k: "Patient CSAT", v: "4.8/5" }] },
   { slug: "meridian-freight-ops", name: "Meridian — Freight Ops Console", industry: "Logistics", category: "Product Engineering",
     summary: "A unified operations console replacing four spreadsheets and two legacy tools.",
@@ -422,11 +429,11 @@ export const jobs = [
 ];
 
 export const posts = [
-  { slug: "automation-that-pays-back", title: "Automation that pays back in a quarter", excerpt: "A pragmatic framework for choosing the first three workflows to automate.", author: "Rohan Verma", date: "2026-05-14", category: "Automation", readingTime: "6 min" },
-  { slug: "ai-agents-in-production", title: "AI agents in production: what breaks and how to fix it", excerpt: "Field notes from 30 production agent deployments across sales, support, and ops.", author: "Meera Kapoor", date: "2026-05-02", category: "AI", readingTime: "9 min" },
-  { slug: "aws-cost-playbook", title: "The AWS cost playbook we run for every new client", excerpt: "Seven levers that consistently cut cloud spend 20–40% without touching workloads.", author: "Karim Al-Farsi", date: "2026-04-18", category: "Cloud", readingTime: "7 min" },
-  { slug: "zoho-crm-that-teams-use", title: "Building a Zoho CRM your sales team will actually use", excerpt: "The difference between a working CRM and a used CRM is workflow design.", author: "Priya Nair", date: "2026-04-05", category: "CRM", readingTime: "5 min" },
-  { slug: "no-code-to-code-migration", title: "When (and how) to graduate from no-code to code", excerpt: "The signals that tell you it's time — and the migration path that won't burn the product.", author: "Anya Sørensen", date: "2026-03-22", category: "Development", readingTime: "8 min" },
+  { image: blogAutomation, slug: "automation-that-pays-back", title: "Automation that pays back in a quarter", excerpt: "A pragmatic framework for choosing the first three workflows to automate.", author: "Rohan Verma", date: "2026-05-14", category: "Automation", readingTime: "6 min" },
+  { image: blogAi, slug: "ai-agents-in-production", title: "AI agents in production: what breaks and how to fix it", excerpt: "Field notes from 30 production agent deployments across sales, support, and ops.", author: "Meera Kapoor", date: "2026-05-02", category: "AI", readingTime: "9 min" },
+  { image: blogCloud, slug: "aws-cost-playbook", title: "The AWS cost playbook we run for every new client", excerpt: "Seven levers that consistently cut cloud spend 20–40% without touching workloads.", author: "Karim Al-Farsi", date: "2026-04-18", category: "Cloud", readingTime: "7 min" },
+  { image: blogCrm, slug: "zoho-crm-that-teams-use", title: "Building a Zoho CRM your sales team will actually use", excerpt: "The difference between a working CRM and a used CRM is workflow design.", author: "Priya Nair", date: "2026-04-05", category: "CRM", readingTime: "5 min" },
+  { image: blogDevelopment, slug: "no-code-to-code-migration", title: "When (and how) to graduate from no-code to code", excerpt: "The signals that tell you it's time — and the migration path that won't burn the product.", author: "Anya Sørensen", date: "2026-03-22", category: "Development", readingTime: "8 min" },
 ];
 
 export const values = [
