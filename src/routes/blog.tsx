@@ -158,7 +158,7 @@ function BlogPage() {
                     <div className="p-3">
                       <div className="flex items-center justify-between">
                         <Pill>{p.category}</Pill>
-                        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
                       </div>
                       <h3 className="mt-3 text-lg font-semibold leading-snug">{p.title}</h3>
                       <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>

@@ -35,7 +35,7 @@ function ToolsPage() {
         <h2 className="mt-3 font-display text-2xl font-bold md:text-3xl">Skills across the practice</h2>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skills.map((group) => (
-            <div key={group.category} className="rounded-2xl border border-hairline bg-background p-6">
+            <div key={group.category} className="card-lift group rounded-2xl border border-hairline bg-background p-6">
               <p className="font-mono text-[11px] uppercase tracking-widest text-brand">{group.category}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {group.items.map((s) => (
@@ -56,7 +56,7 @@ function ToolsPage() {
             <div key={t.name} className="card-lift group flex flex-col rounded-2xl border border-hairline bg-background p-6">
               <div className="flex items-center justify-between">
                 <Pill>{t.tag}</Pill>
-                <Download className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                <Download className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
               </div>
               <h3 className="mt-4 text-lg font-semibold">{t.name}</h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">{t.blurb}</p>

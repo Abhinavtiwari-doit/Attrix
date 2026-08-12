@@ -40,7 +40,7 @@ function CoursesPage() {
                 <div>
                   <div className="flex items-center justify-between">
                     <Pill>{c.level}</Pill>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
                   </div>
                   <h3 className="mt-3 text-lg font-bold">{c.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{c.blurb}</p>

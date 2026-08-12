@@ -99,7 +99,7 @@ function ProjectsPage() {
                       <Pill>{p.industry}</Pill>
                       <Pill>{p.category}</Pill>
                     </div>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
                   </div>
                   <h3 className="mt-4 text-2xl font-bold md:text-3xl">{p.name}</h3>
                   <p className="mt-3 text-sm text-muted-foreground md:text-base">{p.summary}</p>

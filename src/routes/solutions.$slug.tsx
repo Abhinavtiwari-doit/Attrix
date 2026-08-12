@@ -59,7 +59,7 @@ function IndustryDetail() {
             { title: "Our approach", body: "A staged roadmap that ships value each quarter — no multi-year transformation theater." },
             { title: "Outcomes", body: "Fewer tools, tighter feedback loops, and measurable cost or revenue movement per initiative." },
           ].map((b) => (
-            <div key={b.title} className="rounded-2xl border border-hairline bg-background p-8">
+            <div key={b.title} className="card-lift group rounded-2xl border border-hairline bg-background p-8">
               <p className="eyebrow">{b.title}</p>
               <p className="mt-3 text-sm text-muted-foreground">{b.body}</p>
             </div>

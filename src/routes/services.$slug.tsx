@@ -148,7 +148,7 @@ function ServiceDetail() {
         <SectionHeading eyebrow="FAQ" title="Common questions." />
         <div className="mt-10 grid gap-3 md:grid-cols-2">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-xl border border-hairline bg-background p-6">
+            <div key={f.q} className="card-lift group rounded-xl border border-hairline bg-background p-6">
               <p className="text-sm font-semibold">{f.q}</p>
               <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
             </div>
