@@ -452,3 +452,21 @@ export const timeline = [
   { year: "2024", title: "40+ countries", body: "Crossed the milestone of clients on every populated continent." },
   { year: "2026", title: "Attrix today", body: "A senior team across engineering, AI, cloud, design, and delivery." },
 ];
+
+/** YouTube walkthroughs — thumbnail only, hyperlinked to the video. */
+export type VideoTutorial = {
+  youtubeId: string;
+  title: string;
+  category: string;
+  duration?: string;
+};
+
+export const videoTutorials: VideoTutorial[] = [
+  { youtubeId: "dQw4w9WgXcQ", title: "DiagnoseMe.AI — building an ML health prediction API", category: "AI & Machine Learning", duration: "12:40" },
+  { youtubeId: "aqz-KE-bpKQ", title: "Zoho Creator: service booking + dispatch app walkthrough", category: "Zoho & Business Apps", duration: "18:05" },
+  { youtubeId: "ScMzIvxBSi4", title: "n8n automation: lead capture to WhatsApp in 10 minutes", category: "Automation & Operations", duration: "09:22" },
+  { youtubeId: "5qap5aO4i9A", title: "Freight ops console — architecture deep dive", category: "Product Engineering", duration: "21:13" },
+];
+
+export const youtubeThumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+export const youtubeWatch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
