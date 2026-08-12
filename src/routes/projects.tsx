@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
-import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
-import { projects } from "@/content/site";
+import { Section, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
+import { projects, site } from "@/content/site";
+import { VideoTutorials } from "@/components/site/VideoTutorials";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -49,7 +50,7 @@ function ProjectsPage() {
             <div className="flex flex-wrap gap-2">
               {categories.map((c) => (
                 <button key={c} onClick={() => setCat(c)}
-                  className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+                  className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 ${
                     cat === c ? "border-brand bg-brand/10 text-brand" : "border-hairline text-ink-soft hover:bg-surface"
                   }`}>
                   {c}
@@ -61,12 +62,12 @@ function ProjectsPage() {
             <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Filter by skill</p>
             <div className="flex flex-wrap gap-1.5">
               <button onClick={() => setSkill("All")}
-                className={`rounded-full border px-3 py-1 text-[11px] transition ${
+                className={`rounded-full border px-3 py-1 text-[11px] transition-all duration-300 hover:-translate-y-0.5 ${
                   skill === "All" ? "border-brand bg-brand/10 text-brand" : "border-hairline text-ink-soft hover:bg-surface"
                 }`}>All skills</button>
               {allSkills.map((s) => (
                 <button key={s} onClick={() => setSkill(s)}
-                  className={`rounded-full border px-3 py-1 text-[11px] transition ${
+                  className={`rounded-full border px-3 py-1 text-[11px] transition-all duration-300 hover:-translate-y-0.5 ${
                     skill === s ? "border-brand bg-brand/10 text-brand" : "border-hairline text-ink-soft hover:bg-surface"
                   }`}>{s}</button>
               ))}
@@ -84,7 +85,7 @@ function ProjectsPage() {
             No projects match those filters yet.
           </div>
         ) : (
-          <div className="grid gap-6">
+          <Reveal stagger className="grid gap-6">
             {filtered.map((p, i) => (
               <div key={p.slug} className="relative">
                 <Link to="/projects/$slug" params={{ slug: p.slug }}
@@ -115,24 +116,26 @@ function ProjectsPage() {
                       <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft">{t}</span>
                     ))}
                   </div>
-                  {p.demoUrl && <div className="h-11" />}
+                  <div className="h-11" />
                 </div>
                 </Link>
-                {p.demoUrl && (
+                {(
                   <a
-                    href={p.demoUrl}
+                    href={p.demoUrl ?? site.socials.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-6 right-6 inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-3.5 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90 md:bottom-8 md:right-8"
+                    className="group/demo shine absolute bottom-6 right-6 inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-3.5 text-xs font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 md:bottom-8 md:right-8"
                   >
-                    <Play className="h-3.5 w-3.5" /> Watch demo
+                    <Play className="h-3.5 w-3.5 transition-transform duration-300 group-hover/demo:scale-125" /> Watch demo
                   </a>
                 )}
               </div>
             ))}
-          </div>
+          </Reveal>
         )}
       </Section>
+
+      <VideoTutorials />
     </>
   );
 }
