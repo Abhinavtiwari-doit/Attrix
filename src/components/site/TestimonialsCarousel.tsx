@@ -62,7 +62,7 @@ export function TestimonialsCarousel() {
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${count}`}
             className={cn(
-              "transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
               i === index
                 ? "relative translate-x-0 opacity-100"
                 : cn(
