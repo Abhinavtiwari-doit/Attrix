@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowUpRight, Search } from "lucide-react";
-import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
+import { Section, CoverImage, Pill, Reveal } from "@/components/site/primitives";
 import { posts } from "@/content/site";
 
 const SITE_URL = "https://attrix.lovable.app";
@@ -92,7 +92,7 @@ function BlogPage() {
                 key={c}
                 type="button"
                 onClick={() => setCategory(c)}
-                className={`inline-flex h-9 items-center rounded-full border px-4 text-xs font-semibold transition ${
+                className={`inline-flex h-9 items-center rounded-full border px-4 text-xs font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
                   category === c
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-hairline bg-background text-ink-soft hover:border-ink/40 hover:text-ink"
@@ -129,7 +129,7 @@ function BlogPage() {
                 className="card-lift group grid gap-6 rounded-3xl border border-hairline bg-background p-6 md:grid-cols-12 md:p-8"
               >
                 <div className="md:col-span-7">
-                  <ImagePlaceholder label={`${featured.title} — cover`} aspect="16/9" />
+                  <CoverImage src={featured.image} label={`${featured.title} — cover`} aspect="16/9" />
                 </div>
                 <div className="md:col-span-5 md:flex md:flex-col md:justify-center">
                   <div className="flex items-center gap-2">
@@ -146,7 +146,7 @@ function BlogPage() {
             )}
 
             {rest.length > 0 && (
-              <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <Reveal stagger className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {rest.map((p) => (
                   <Link
                     key={p.slug}
@@ -154,7 +154,7 @@ function BlogPage() {
                     params={{ slug: p.slug }}
                     className="card-lift group rounded-2xl border border-hairline bg-background p-4"
                   >
-                    <ImagePlaceholder label={`${p.title} — cover`} aspect="16/10" />
+                    <CoverImage src={p.image} label={`${p.title} — cover`} aspect="16/10" />
                     <div className="p-3">
                       <div className="flex items-center justify-between">
                         <Pill>{p.category}</Pill>
@@ -166,7 +166,7 @@ function BlogPage() {
                     </div>
                   </Link>
                 ))}
-              </div>
+              </Reveal>
             )}
           </>
         )}

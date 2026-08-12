@@ -365,3 +365,33 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- Route transitions ---------- */
+@keyframes route-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@utility route-enter {
+  animation: route-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes route-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(0.85); }
+}
+@utility route-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 60;
+  height: 2px;
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+  background: linear-gradient(90deg, var(--color-brand), var(--color-cta));
+  transition: opacity 200ms ease;
+  &.is-active {
+    opacity: 1;
+    animation: route-bar 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
