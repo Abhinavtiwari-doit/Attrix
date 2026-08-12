@@ -147,3 +147,34 @@ export function Pill({ children }: { children: ReactNode }) {
     </span>
   );
 }
+
+/** Renders a real cover image when one exists, else the labelled placeholder. */
+export function CoverImage({
+  src,
+  label,
+  aspect = "16/9",
+  className,
+}: {
+  src?: string;
+  label: string;
+  aspect?: string;
+  className?: string;
+}) {
+  if (!src) return <ImagePlaceholder label={label} aspect={aspect} className={className} />;
+  return (
+    <div
+      style={{ aspectRatio: aspect }}
+      className={cn(
+        "zoom-media relative w-full overflow-hidden rounded-xl border border-hairline bg-surface transition-colors duration-500 group-hover:border-brand/40",
+        className,
+      )}
+    >
+      <img
+        src={src}
+        alt={label}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+      />
+    </div>
+  );
+}

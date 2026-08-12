@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
+  useRouterState,
   Link,
   createRootRouteWithContext,
   useRouter,
@@ -155,14 +156,30 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function RouteTransition({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  return (
+    <div key={pathname} className="route-enter">
+      {children}
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const isNavigating = useRouterState({ select: (s) => s.status === "pending" });
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background">
+        <div
+          aria-hidden="true"
+          className={`route-progress ${isNavigating ? "is-active" : ""}`}
+        />
         <SiteHeader />
         <main className="flex-1">
-          <Outlet />
+          <RouteTransition>
+            <Outlet />
+          </RouteTransition>
         </main>
         <SiteFooter />
       </div>

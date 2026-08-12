@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
+import { Section, CoverImage, Pill } from "@/components/site/primitives";
 import { posts } from "@/content/site";
 
 const SITE_URL = "https://attrix.lovable.app";
@@ -40,6 +40,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        ...(p.image ? [{ property: "og:image", content: `${SITE_URL}${p.image}` }, { name: "twitter:image", content: `${SITE_URL}${p.image}` }] : []),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -100,8 +101,8 @@ function PostDetail() {
           <p className="mt-4 text-lg text-muted-foreground">{post.excerpt}</p>
           <p className="mt-6 text-sm font-semibold">{post.author}</p>
         </div>
-        <div className="mx-auto mt-10 max-w-4xl">
-          <ImagePlaceholder label={`${post.title} — cover`} aspect="16/9" />
+        <div className="group mx-auto mt-10 max-w-4xl">
+          <CoverImage src={post.image} label={`${post.title} — cover`} aspect="16/9" />
         </div>
       </Section>
 
@@ -128,8 +129,8 @@ function PostDetail() {
         <h2 className="text-2xl font-bold">Keep reading</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {related.map((p) => (
-            <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="card-lift rounded-2xl border border-hairline bg-background p-4">
-              <ImagePlaceholder label={p.title} aspect="16/10" />
+            <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="card-lift group rounded-2xl border border-hairline bg-background p-4">
+              <CoverImage src={p.image} label={p.title} aspect="16/10" />
               <div className="p-3">
                 <Pill>{p.category}</Pill>
                 <h3 className="mt-3 text-base font-semibold">{p.title}</h3>

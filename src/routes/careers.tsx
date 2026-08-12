@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, MapPin, DollarSign, Briefcase } from "lucide-react";
-import { Section, SectionHeading } from "@/components/site/primitives";
-import { jobs } from "@/content/site";
+import { Section, SectionHeading, Reveal } from "@/components/site/primitives";
+import { jobs, site } from "@/content/site";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -47,21 +47,21 @@ export function CareersPage() {
 
       <Section tone="surface">
         <SectionHeading eyebrow="Life at Attrix" title="What working here actually looks like." />
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {perks.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-hairline bg-background p-6">
+            <div key={p.title} className="card-lift group rounded-2xl border border-hairline bg-background p-6">
               <h3 className="text-base font-bold">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       <Section>
         <SectionHeading eyebrow="Open roles" title="We're hiring." />
         <div className="mt-10 divide-y divide-hairline overflow-hidden rounded-2xl border border-hairline bg-background">
           {jobs.map((j) => (
-            <div key={j.id} className="grid gap-4 p-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
+            <div key={j.id} className="group grid gap-4 p-6 transition-colors duration-300 hover:bg-surface md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
               <div className="min-w-0">
                 <p className="font-mono text-[11px] uppercase tracking-widest text-brand">{j.id} · {j.dept}</p>
                 <h3 className="mt-2 text-lg font-semibold">{j.role}</h3>
@@ -71,9 +71,13 @@ export function CareersPage() {
                   <span className="inline-flex items-center gap-1"><DollarSign className="h-3.5 w-3.5" /> {j.salary}</span>
                 </div>
               </div>
-              <button className="inline-flex h-10 items-center gap-1.5 justify-self-start rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground md:justify-self-end">
-                Apply <ArrowRight className="h-3.5 w-3.5" />
-              </button>
+              <a
+                href={`mailto:${site.email}?subject=${encodeURIComponent(`Application: ${j.role} (${j.id})`)}&body=${encodeURIComponent(`Hi Attrix team,\n\nI'd like to apply for the ${j.role} role (${j.id}, ${j.location}).\n\nPortfolio / LinkedIn:\nResume: (attached)\n\nThanks,\n`)}`}
+                className="shine group inline-flex h-10 items-center gap-1.5 justify-self-start rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 md:justify-self-end"
+                aria-label={`Apply for ${j.role}`}
+              >
+                Apply <ArrowRight className="icon-nudge h-3.5 w-3.5" />
+              </a>
             </div>
           ))}
         </div>
@@ -81,15 +85,15 @@ export function CareersPage() {
 
       <Section tone="ink">
         <SectionHeading eyebrow="Hiring process" title="What to expect." invert />
-        <ol className="mt-12 grid gap-4 md:grid-cols-4">
+        <Reveal stagger as="div" className="mt-12 grid gap-4 md:grid-cols-4">
           {process.map((p, i) => (
-            <li key={p.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div key={p.title} className="hover-lift rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.07]">
               <p className="font-mono text-xs font-semibold text-cta">0{i + 1}</p>
               <h3 className="mt-3 text-base font-bold text-white">{p.title}</h3>
               <p className="mt-2 text-xs text-white/70">{p.body}</p>
-            </li>
+            </div>
           ))}
-        </ol>
+        </Reveal>
       </Section>
     </>
   );

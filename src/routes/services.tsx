@@ -42,7 +42,7 @@ function ServicesPage() {
               <div>
                 <div className="flex items-center justify-between">
                   <Pill>{String(i + 1).padStart(2, "0")} · {s.tag}</Pill>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
                 </div>
                 <h3 className="mt-6 text-2xl font-bold">{s.name}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">{s.details}</p>

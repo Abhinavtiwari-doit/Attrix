@@ -56,7 +56,7 @@ function SaasPage() {
             { icon: Sparkles, title: "AI where it matters", body: "Agents and copilots wired into your data, with the guardrails production needs." },
             { icon: Bell, title: "Early-access perks", body: "Founding customers get discounted pricing, direct roadmap input, and hands-on onboarding." },
           ].map((f) => (
-            <div key={f.title} className="rounded-2xl border border-hairline bg-background p-6">
+            <div key={f.title} className="card-lift group rounded-2xl border border-hairline bg-background p-6">
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-brand/10 text-brand">
                 <f.icon className="h-5 w-5" />
               </div>

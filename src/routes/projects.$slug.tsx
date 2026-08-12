@@ -85,7 +85,7 @@ function ProjectDetail() {
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+              className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90"
             >
               <Play className="h-4 w-4" /> Watch demo video
             </a>
@@ -99,7 +99,7 @@ function ProjectDetail() {
       <Section tone="surface">
         <div className="grid gap-8 md:grid-cols-3">
           {project.metrics.map((m: { k: string; v: string }) => (
-            <div key={m.k} className="rounded-2xl border border-hairline bg-background p-8">
+            <div key={m.k} className="card-lift group rounded-2xl border border-hairline bg-background p-8">
               <p className="text-xs uppercase tracking-widest text-muted-foreground">{m.k}</p>
               <p className="mt-3 font-display text-4xl font-bold text-brand">{m.v}</p>
             </div>

@@ -64,7 +64,7 @@ function AboutPage() {
         <SectionHeading eyebrow="Core values" title="Six commitments we won't compromise." />
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => (
-            <div key={v.title} className="rounded-2xl border border-hairline bg-background p-8">
+            <div key={v.title} className="card-lift group rounded-2xl border border-hairline bg-background p-8">
               <p className="font-mono text-xs font-semibold text-brand">0{i + 1}</p>
               <h3 className="mt-3 text-lg font-bold">{v.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{v.body}</p>
@@ -77,7 +77,7 @@ function AboutPage() {
         <SectionHeading eyebrow="Timeline" title="From two people to a global team." invert />
         <ol className="mt-12 grid gap-4 md:grid-cols-5">
           {timeline.map((t) => (
-            <li key={t.year} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <li key={t.year} className="hover-lift rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.07]">
               <p className="font-mono text-xs font-semibold text-cta">{t.year}</p>
               <h3 className="mt-2 text-base font-bold text-white">{t.title}</h3>
               <p className="mt-2 text-xs text-white/60">{t.body}</p>

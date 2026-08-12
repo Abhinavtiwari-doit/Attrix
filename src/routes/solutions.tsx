@@ -38,7 +38,7 @@ function SolutionsPage() {
                   <p className="font-mono text-[10px] uppercase tracking-widest text-brand">Industry</p>
                   <h3 className="mt-3 text-xl font-bold">{i.name}</h3>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
               </div>
               <p className="mt-4 text-sm text-muted-foreground">{i.blurb}</p>
             </Link>
