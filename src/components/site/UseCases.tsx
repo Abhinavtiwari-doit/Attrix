@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
-import { Section, Reveal } from "@/components/site/primitives";
+import { Section } from "@/components/site/primitives";
 import { services } from "@/content/site";
 
 /** Left scenario list + right detail panel (tab pattern). */
