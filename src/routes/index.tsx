@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, Cloud, Cpu, BarChart3, Workflow, Boxes, Shield } from "lucide-react";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 import { VideoTutorials } from "@/components/site/VideoTutorials";
+import { UseCases } from "@/components/site/UseCases";
+import { IndustrySpotlight } from "@/components/site/IndustrySpotlight";
+import { EngagementIncludes } from "@/components/site/EngagementIncludes";
 import { Section, SectionHeading, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
 import { services, industries, stats, clientLogos, technologies, projects, process } from "@/content/site";
 import heroTeam from "@/assets/hero-team.jpg";
@@ -169,6 +172,9 @@ function Home() {
 
       </Section>
 
+      {/* USE CASES */}
+      <UseCases />
+
       {/* WHY CHOOSE */}
       <Section tone="surface">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -236,6 +242,12 @@ function Home() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
         </Reveal>
       </section>
+
+      {/* INDUSTRY SPOTLIGHT */}
+      <IndustrySpotlight />
+
+      {/* ENGAGEMENT INCLUDES */}
+      <EngagementIncludes />
 
       {/* INDUSTRIES */}
       <Section>
