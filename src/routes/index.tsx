@@ -285,29 +285,9 @@ function Home() {
         </Reveal>
       </Section>
 
-      {/* TECHNOLOGY ECOSYSTEM */}
-      <Section tone="ink">
-        <SectionHeading
-          eyebrow="Ecosystem"
-          title="Fluent across the tools you already use."
-          subtitle="We standardize on proven stacks — and integrate cleanly with whatever else you're running."
-          invert
-        />
-        <Reveal stagger className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {Object.entries(technologies).map(([category, items]) => (
-            <div key={category} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.07]">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">{category}</p>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
-                {items.map((t) => (
-                  <li key={t} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-white/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15">
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </Reveal>
-      </Section>
+      {/* SKILLS / STACK */}
+      <StackedCapabilities />
+
 
       {/* PROJECTS */}
       <Section>
