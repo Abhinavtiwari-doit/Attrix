@@ -71,20 +71,31 @@ export function SiteHeader() {
   }, [productsOpen, megaOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "border-b border-hairline bg-background/85 backdrop-blur-md" : "bg-background"
-      }`}
-    >
-      <div className="container-page flex h-16 items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 w-full">
+      <div className="bg-ink">
+        <div className="container-page flex h-9 items-center justify-center gap-3 text-[11px] text-white/70">
+          <span className="hidden font-mono uppercase tracking-[0.16em] text-cta sm:inline">New</span>
+          <span className="truncate">Attrix SaaS early access is open — join the founding cohort.</span>
+          <Link to="/saas" className="group inline-flex items-center gap-1 font-semibold text-white">
+            Register <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
+      <div
+        className={`w-full transition-all duration-300 ${
+          scrolled ? "border-b border-hairline bg-background/85 backdrop-blur-md" : "border-b border-hairline/60 bg-background"
+        }`}
+      >
+      <div className="container-page flex h-[68px] items-center justify-between gap-6">
         <Link to="/" className="group flex items-center gap-2">
           <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <span className="font-display text-sm font-bold">A</span>
           </span>
-          <span className="font-display text-[15px] font-bold tracking-tight transition-colors duration-300 group-hover:text-brand">
+          <span className="font-display text-[17px] font-bold tracking-tight transition-colors duration-300 group-hover:text-brand">
             Attrix<span className="text-brand">.</span>
           </span>
         </Link>
+
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
