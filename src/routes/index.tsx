@@ -42,66 +42,77 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.4]">
-          <div className="animate-blob absolute -left-40 top-10 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
-          <div className="animate-float absolute right-0 top-40 h-72 w-72 rounded-full bg-cta/10 blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="tech-grid absolute inset-0 opacity-60" />
+          <div className="animate-blob absolute -left-40 top-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
+          <div className="animate-float absolute -right-20 top-40 h-80 w-80 rounded-full bg-cta/10 blur-3xl" />
         </div>
-        <div className="container-page grid gap-12 pb-20 pt-16 md:pb-28 md:pt-24 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+
+        <div className="container-page pb-16 pt-20 md:pb-24 md:pt-28">
+          <div className="max-w-4xl">
             <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-3 py-1 text-xs transition-colors hover:border-brand/50">
               <span className="animate-pulse-ring h-1.5 w-1.5 rounded-full bg-brand" />
               <span className="font-mono uppercase tracking-widest text-ink-soft">Now booking Q3 engagements</span>
             </div>
-            <h1 className="animate-fade-up mt-6 text-4xl font-bold tracking-tight [animation-delay:80ms] sm:text-5xl md:text-6xl lg:text-[64px] lg:leading-[1.05]">
-              Technology that moves the business — <span className="text-brand">not just the demo.</span>
+            <h1 className="animate-fade-up mt-7 text-[40px] font-bold leading-[1.03] tracking-tight [animation-delay:80ms] sm:text-6xl md:text-7xl lg:text-[80px]">
+              Accelerate your journey from AI investment to{" "}
+              <span className="text-brand">enterprise impact.</span>
             </h1>
-            <p className="animate-fade-up mt-6 max-w-xl text-base text-muted-foreground [animation-delay:160ms] md:text-lg">
-              Attrix Technologies partners with ambitious teams to design, ship, and operate the automation, AI, cloud, and software that measurably grows the business.
+            <p className="animate-fade-up mt-7 max-w-2xl text-base text-muted-foreground [animation-delay:160ms] md:text-lg">
+              Attrix designs, ships, and operates the automation, AI, cloud, and software that measurably grows the business — not just the demo.
             </p>
-            <div className="animate-fade-up mt-8 flex flex-wrap gap-3 [animation-delay:240ms]">
-              <Link to="/contact" className="shine group inline-flex h-12 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-elevated">
+            <div className="animate-fade-up mt-9 flex flex-wrap gap-3 [animation-delay:240ms]">
+              <Link to="/contact" className="shine group inline-flex h-12 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-semibold text-cta-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105">
                 Start a project <ArrowRight className="icon-nudge h-4 w-4" />
               </Link>
-              <Link to="/projects" className="inline-flex h-12 items-center gap-2 rounded-lg border border-border px-6 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-surface">
-                See case studies
+              <Link to="/projects" className="group inline-flex h-12 items-center gap-2 rounded-lg border border-border bg-background px-6 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-surface">
+                See case studies <ArrowRight className="icon-nudge h-4 w-4" />
               </Link>
             </div>
-            <dl className="animate-fade-up mt-12 grid max-w-lg grid-cols-2 gap-6 [animation-delay:320ms] sm:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label} className="transition-transform duration-300 hover:-translate-y-1">
-                  <dt className="font-display text-2xl font-bold transition-colors duration-300 hover:text-brand">{s.value}</dt>
-                  <dd className="mt-1 text-xs text-muted-foreground">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
-          <div className="lg:col-span-5">
-            <div className="animate-fade-up group relative [animation-delay:200ms]">
-              <div className="relative overflow-hidden rounded-2xl border border-hairline shadow-elevated transition-all duration-500 group-hover:shadow-[0_30px_60px_-20px_rgb(15_23_42_/_0.25)]" style={{ aspectRatio: "4/5" }}>
-                <img
-                  src={heroTeam}
-                  alt="Attrix consultants reviewing analytics dashboards and code"
-                  width={1200}
-                  height={1504}
-                  className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="animate-float absolute -bottom-6 -left-6 hidden w-64 rounded-xl border border-hairline bg-background p-4 shadow-elevated transition-transform duration-500 hover:-translate-y-1 md:block">
-                <div className="flex items-center gap-2">
-                  <div className="animate-pulse-ring h-2 w-2 rounded-full bg-green-500" />
-                  <p className="text-xs font-medium">System health</p>
-                </div>
-                <p className="mt-2 font-display text-xl font-bold">99.98%</p>
-                <p className="text-[11px] text-muted-foreground">Uptime across managed clients</p>
-              </div>
-              <div className="animate-float absolute -right-4 -top-4 hidden w-56 rounded-xl border border-hairline bg-background p-4 shadow-elevated [animation-delay:1.5s] transition-transform duration-500 hover:-translate-y-1 md:block">
-                <p className="eyebrow">Automation</p>
-                <p className="mt-1 text-sm font-semibold">180+ hrs / week saved</p>
-                <p className="text-[11px] text-muted-foreground">Across active client workflows</p>
-              </div>
+
+          {/* Command bar */}
+          <div className="animate-fade-up mt-14 rounded-2xl bg-ink p-4 shadow-elevated [animation-delay:320ms] md:p-6">
+            <Link
+              to="/contact"
+              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 transition-all duration-300 hover:border-white/30 hover:bg-white/[0.08]"
+            >
+              <Sparkles className="h-4 w-4 shrink-0 text-cta" />
+              <span className="flex-1 truncate text-sm text-white/70">
+                Tell Attrix what you want to automate, build, or migrate…
+              </span>
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/10 transition-transform duration-300 group-hover:-translate-y-0.5">
+                <ArrowRight className="h-4 w-4 text-white" />
+              </span>
+            </Link>
+            <p className="mt-4 text-center text-xs text-white/45">
+              Not sure where to start? See how we agentify an enterprise:
+            </p>
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              {industries.slice(0, 4).map((i) => (
+                <Link
+                  key={i.slug}
+                  to="/solutions/$slug"
+                  params={{ slug: i.slug }}
+                  className="group inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2 font-mono text-[10px] uppercase tracking-widest text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:text-white"
+                >
+                  <ArrowRight className="h-3 w-3 text-cta transition-transform duration-300 group-hover:translate-x-0.5" />
+                  {i.name}
+                </Link>
+              ))}
             </div>
           </div>
+
+          <dl className="animate-fade-up mt-14 grid grid-cols-2 gap-6 border-t border-hairline pt-10 [animation-delay:400ms] sm:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="transition-transform duration-300 hover:-translate-y-1">
+                <dt className="font-display text-3xl font-bold transition-colors duration-300 hover:text-brand">{s.value}</dt>
+                <dd className="mt-1 text-xs text-muted-foreground">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
+
 
 
         {/* Logo cloud */}
