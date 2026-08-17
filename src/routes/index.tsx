@@ -5,8 +5,10 @@ import { VideoTutorials } from "@/components/site/VideoTutorials";
 import { UseCases } from "@/components/site/UseCases";
 import { IndustrySpotlight } from "@/components/site/IndustrySpotlight";
 import { EngagementIncludes } from "@/components/site/EngagementIncludes";
+import { StackedCapabilities } from "@/components/site/StackedCapabilities";
+import { CtaCard } from "@/components/site/CtaCard";
 import { Section, SectionHeading, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
-import { services, industries, stats, clientLogos, technologies, projects, process } from "@/content/site";
+import { services, industries, stats, clientLogos, projects, process } from "@/content/site";
 import heroTeam from "@/assets/hero-team.jpg";
 import heroAbstract from "@/assets/hero-abstract.jpg";
 
