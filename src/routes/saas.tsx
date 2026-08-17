@@ -289,33 +289,19 @@ function SaasPage() {
         </div>
       </Section>
 
+      {/* SHARED SECTIONS */}
+      <EngagementIncludes />
+
       {/* CTA */}
-      <section className="relative overflow-hidden bg-ink py-20 text-primary-foreground">
-        <div className="tech-grid absolute inset-0" />
-        <div className="glow-orb bottom-[-20%] left-1/2 h-64 w-[28rem] -translate-x-1/2 bg-brand" />
-        <div className="container-page relative text-center">
-          <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl">
-            Get on the list before the cohort fills.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
-            Tell us what you&apos;re automating today and we&apos;ll show you the module that replaces it.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to="/contact"
-              className="shine inline-flex h-11 items-center gap-2 rounded-lg bg-brand px-5 text-sm font-semibold text-brand-foreground transition-transform hover:-translate-y-0.5"
-            >
-              <Bell className="h-4 w-4" /> Join the waitlist
-            </Link>
-            <Link
-              to="/products"
-              className="group inline-flex h-11 items-center gap-2 rounded-lg border border-white/20 px-5 text-sm font-semibold text-primary-foreground hover:bg-white/5"
-            >
-              Explore products <ArrowRight className="icon-nudge h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaCard
+        eyebrow="Early access"
+        title="Get on the list before the cohort fills."
+        subtitle="Tell us what you're automating today and we'll show you the module that replaces it."
+        primaryLabel="Join the waitlist"
+        secondaryLabel="Explore products"
+        secondaryTo="/products"
+      />
+
     </>
   );
 }
