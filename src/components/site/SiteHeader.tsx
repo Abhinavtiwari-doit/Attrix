@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Mail } from "lucide-react";
 import { services } from "@/content/site";
 
 const productLinks = [
@@ -71,20 +71,31 @@ export function SiteHeader() {
   }, [productsOpen, megaOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "border-b border-hairline bg-background/85 backdrop-blur-md" : "bg-background"
-      }`}
-    >
-      <div className="container-page flex h-16 items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 w-full">
+      <div className="bg-ink">
+        <div className="container-page flex h-9 items-center justify-center gap-3 text-[11px] text-white/70">
+          <span className="hidden font-mono uppercase tracking-[0.16em] text-cta sm:inline">New</span>
+          <span className="truncate">Attrix SaaS early access is open — join the founding cohort.</span>
+          <Link to="/saas" className="group inline-flex items-center gap-1 font-semibold text-white">
+            Register <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
+      <div
+        className={`w-full transition-all duration-300 ${
+          scrolled ? "border-b border-hairline bg-background/85 backdrop-blur-md" : "border-b border-hairline/60 bg-background"
+        }`}
+      >
+      <div className="container-page flex h-[68px] items-center justify-between gap-6">
         <Link to="/" className="group flex items-center gap-2">
           <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <span className="font-display text-sm font-bold">A</span>
           </span>
-          <span className="font-display text-[15px] font-bold tracking-tight transition-colors duration-300 group-hover:text-brand">
+          <span className="font-display text-[17px] font-bold tracking-tight transition-colors duration-300 group-hover:text-brand">
             Attrix<span className="text-brand">.</span>
           </span>
         </Link>
+
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
@@ -210,10 +221,17 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="shine group hidden h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-soft md:inline-flex"
+            className="hidden items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink md:inline-flex"
+          >
+            <Mail className="h-4 w-4" /> Contact us
+          </Link>
+          <span className="hidden h-5 w-px bg-hairline md:block" />
+          <Link
+            to="/contact"
+            className="shine group hidden h-10 items-center gap-1.5 rounded-md bg-cta px-5 text-sm font-semibold text-cta-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 md:inline-flex"
           >
             Start a project <ArrowRight className="icon-nudge h-3.5 w-3.5" />
           </Link>
@@ -227,6 +245,8 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
+      </div>
+
 
       {open && (
         <div className="border-t border-hairline bg-background lg:hidden">

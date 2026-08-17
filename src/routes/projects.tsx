@@ -4,6 +4,9 @@ import { ArrowUpRight, Play } from "lucide-react";
 import { Section, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
 import { projects, site } from "@/content/site";
 import { VideoTutorials } from "@/components/site/VideoTutorials";
+import { IndustrySpotlight } from "@/components/site/IndustrySpotlight";
+import { EngagementIncludes } from "@/components/site/EngagementIncludes";
+import { CtaCard } from "@/components/site/CtaCard";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -136,6 +139,10 @@ function ProjectsPage() {
       </Section>
 
       <VideoTutorials />
+      <IndustrySpotlight />
+      <EngagementIncludes />
+      <CtaCard eyebrow="Ready?" title="Want a case study like these?" secondaryLabel="Browse services" secondaryTo="/services" />
     </>
   );
 }
+

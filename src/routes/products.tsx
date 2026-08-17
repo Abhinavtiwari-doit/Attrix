@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
+import { StackedCapabilities } from "@/components/site/StackedCapabilities";
+import { EngagementIncludes } from "@/components/site/EngagementIncludes";
+import { CtaCard } from "@/components/site/CtaCard";
 import { products } from "@/content/site";
 
 export const Route = createFileRoute("/products")({
@@ -61,6 +64,10 @@ function ProductsPage() {
           ))}
         </div>
       </Section>
+      <StackedCapabilities />
+      <EngagementIncludes />
+      <CtaCard eyebrow="Ready?" title="Need a product built like these?" secondaryLabel="See our work" secondaryTo="/projects" />
     </>
   );
 }
+

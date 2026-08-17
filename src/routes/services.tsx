@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Section, SectionHeading, Pill } from "@/components/site/primitives";
+import { ArrowUpRight } from "lucide-react";
+import { Section, Pill } from "@/components/site/primitives";
+import { UseCases } from "@/components/site/UseCases";
+import { EngagementIncludes } from "@/components/site/EngagementIncludes";
+import { CtaCard } from "@/components/site/CtaCard";
 import { services } from "@/content/site";
 
 export const Route = createFileRoute("/services")({
@@ -61,14 +64,10 @@ function ServicesPage() {
           ))}
         </div>
       </Section>
-      <Section tone="ink">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <SectionHeading eyebrow="Ready?" title="Tell us what you're building." invert />
-          <Link to="/contact" className="inline-flex h-12 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-semibold text-cta-foreground">
-            Book a consultation <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </Section>
+      <UseCases />
+      <EngagementIncludes />
+      <CtaCard eyebrow="Ready?" title="Tell us what you're building." />
     </>
   );
 }
+
