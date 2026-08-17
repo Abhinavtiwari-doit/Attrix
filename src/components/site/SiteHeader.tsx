@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Mail } from "lucide-react";
 import { services } from "@/content/site";
 
 const productLinks = [
@@ -221,10 +221,17 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="shine group hidden h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-soft md:inline-flex"
+            className="hidden items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink md:inline-flex"
+          >
+            <Mail className="h-4 w-4" /> Contact us
+          </Link>
+          <span className="hidden h-5 w-px bg-hairline md:block" />
+          <Link
+            to="/contact"
+            className="shine group hidden h-10 items-center gap-1.5 rounded-md bg-cta px-5 text-sm font-semibold text-cta-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 md:inline-flex"
           >
             Start a project <ArrowRight className="icon-nudge h-3.5 w-3.5" />
           </Link>
@@ -238,6 +245,8 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
+      </div>
+
 
       {open && (
         <div className="border-t border-hairline bg-background lg:hidden">
