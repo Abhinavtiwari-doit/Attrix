@@ -8,7 +8,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -167,19 +167,12 @@ function RouteTransition({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const navigationStatus = useRouterState({ select: (s) => s.status });
-  const [isNavigating, setIsNavigating] = useState(false);
-
-  useEffect(() => {
-    setIsNavigating(navigationStatus === "pending");
-  }, [navigationStatus]);
-
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background">
         <div
           aria-hidden="true"
-          className={`route-progress ${isNavigating ? "is-active" : ""}`}
+          className="route-progress"
         />
         <SiteHeader />
         <main className="flex-1">
