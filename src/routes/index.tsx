@@ -7,6 +7,8 @@ import { IndustrySpotlight } from "@/components/site/IndustrySpotlight";
 import { EngagementIncludes } from "@/components/site/EngagementIncludes";
 import { StackedCapabilities } from "@/components/site/StackedCapabilities";
 import { CtaCard } from "@/components/site/CtaCard";
+import { BentoFeatures } from "@/components/site/BentoFeatures";
+import { ShowcaseRows } from "@/components/site/ShowcaseRows";
 import { Section, SectionHeading, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
 import { services, industries, stats, clientLogos, projects, process } from "@/content/site";
 import heroTeam from "@/assets/hero-team.jpg";
@@ -144,6 +146,12 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* PLATFORM BENTO */}
+      <BentoFeatures />
+
+      {/* SERVICE / PRODUCT SHOWCASE */}
+      <ShowcaseRows />
 
       {/* SERVICES */}
       <Section>
