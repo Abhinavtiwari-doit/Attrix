@@ -167,7 +167,13 @@ function RouteTransition({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const isNavigating = useRouterState({ select: (s) => s.status === "pending" });
+  const navigationStatus = useRouterState({ select: (s) => s.status });
+  const [isNavigating, setIsNavigating] = useState(false);
+
+  useEffect(() => {
+    setIsNavigating(navigationStatus === "pending");
+  }, [navigationStatus]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background">
