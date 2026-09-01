@@ -4,6 +4,8 @@ import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
 import { StackedCapabilities } from "@/components/site/StackedCapabilities";
 import { EngagementIncludes } from "@/components/site/EngagementIncludes";
 import { CtaCard } from "@/components/site/CtaCard";
+import { BentoFeatures } from "@/components/site/BentoFeatures";
+import { ShowcaseRows } from "@/components/site/ShowcaseRows";
 import { products } from "@/content/site";
 
 export const Route = createFileRoute("/products")({
@@ -36,6 +38,11 @@ function ProductsPage() {
           </Link>
         </div>
       </Section>
+      <ShowcaseRows
+        eyebrow="Built for adoption"
+        title="Products with a job to do."
+        subtitle="Focused tools, measured outcomes, and a team behind the rollout when you need it."
+      />
       <Section className="!pt-6">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
@@ -64,6 +71,7 @@ function ProductsPage() {
           ))}
         </div>
       </Section>
+      <BentoFeatures />
       <StackedCapabilities />
       <EngagementIncludes />
       <CtaCard eyebrow="Ready?" title="Need a product built like these?" secondaryLabel="See our work" secondaryTo="/projects" />

@@ -4,6 +4,7 @@ import { Section, Pill } from "@/components/site/primitives";
 import { UseCases } from "@/components/site/UseCases";
 import { EngagementIncludes } from "@/components/site/EngagementIncludes";
 import { CtaCard } from "@/components/site/CtaCard";
+import { ShowcaseRows } from "@/components/site/ShowcaseRows";
 import { services } from "@/content/site";
 
 export const Route = createFileRoute("/services")({
@@ -33,6 +34,11 @@ function ServicesPage() {
           </p>
         </div>
       </Section>
+      <ShowcaseRows
+        eyebrow="How we help"
+        title="From first audit to production handover."
+        subtitle="A clear path from expensive friction to software your team can own."
+      />
       <Section className="!pt-6">
         <div className="grid gap-4 md:grid-cols-2">
           {services.map((s, i) => (

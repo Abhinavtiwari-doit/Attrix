@@ -167,13 +167,12 @@ function RouteTransition({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const isNavigating = useRouterState({ select: (s) => s.status === "pending" });
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background">
         <div
           aria-hidden="true"
-          className={`route-progress ${isNavigating ? "is-active" : ""}`}
+          className="route-progress"
         />
         <SiteHeader />
         <main className="flex-1">

@@ -17,6 +17,7 @@ import {
   CircleDot,
 } from "lucide-react";
 import { Section, Reveal, SectionHeading, Pill } from "@/components/site/primitives";
+import { BentoFeatures } from "@/components/site/BentoFeatures";
 
 export const Route = createFileRoute("/saas")({
   head: () => ({
@@ -141,6 +142,8 @@ function SaasPage() {
           </Reveal>
         </div>
       </section>
+
+      <BentoFeatures />
 
       {/* Modules */}
       <Section>
