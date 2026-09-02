@@ -171,24 +171,39 @@ function TeamPage() {
                     </div>
                   </div>
                   <div className="relative mt-5 flex items-center gap-1.5">
-                    <a
-                      href={m.links?.linkedin ?? "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${m.name} on LinkedIn`}
-                      className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-                    >
-                      <Linkedin className="h-3.5 w-3.5" />
-                    </a>
-                    <a
-                      href={m.links?.github ?? "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${m.name} on GitHub`}
-                      className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                    </a>
+                    {m.links?.linkedin && (
+                      <a
+                        href={m.links.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} on LinkedIn`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Linkedin className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {m.links?.github && (
+                      <a
+                        href={m.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} on GitHub`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {m.links?.portfolio && (
+                      <a
+                        href={m.links.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} portfolio`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Globe className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
