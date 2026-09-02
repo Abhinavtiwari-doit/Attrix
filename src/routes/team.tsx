@@ -43,7 +43,7 @@ function SpotlightCard({ m }: { m: TeamMember }) {
           <ArrowUpRight className="h-4 w-4 text-white/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cta" />
         </div>
 
-        <h3 className="mt-6 font-display text-2xl font-bold">{m.name}</h3>
+        <h3 className="mt-6 font-display text-2xl font-bold text-white">{m.name}</h3>
         <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-cta">{m.role}</p>
         {m.location && (
           <p className="mt-2 inline-flex items-center gap-1 text-xs text-white/50">
