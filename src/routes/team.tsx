@@ -43,40 +43,12 @@ function SpotlightCard({ m }: { m: TeamMember }) {
           <ArrowUpRight className="h-4 w-4 text-white/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cta" />
         </div>
 
-        <h3 className="mt-6 font-display text-2xl font-bold">{m.name}</h3>
+        <h3 className="mt-6 font-display text-2xl font-bold text-white">{m.name}</h3>
         <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-cta">{m.role}</p>
         {m.location && (
           <p className="mt-2 inline-flex items-center gap-1 text-xs text-white/50">
             <MapPin className="h-3 w-3" /> {m.location}
           </p>
-        )}
-
-        {m.bio && <p className="mt-5 text-sm leading-relaxed text-white/65">{m.bio}</p>}
-
-        {m.experience && (
-          <ul className="mt-6 space-y-2">
-            {m.experience.slice(0, 4).map((e) => (
-              <li
-                key={e}
-                className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/60 transition-colors duration-300 hover:border-white/25 hover:text-white"
-              >
-                {e}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {m.tags && (
-          <div className="mt-6 flex flex-wrap gap-1.5">
-            {m.tags.map((t) => (
-              <span
-                key={t}
-                className="rounded-md border border-white/10 px-2 py-1 text-[11px] text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/50 hover:text-cta"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
         )}
 
         <div className="mt-7 flex flex-wrap gap-2">
@@ -198,34 +170,40 @@ function TeamPage() {
                       <p className="mt-0.5 truncate text-xs text-muted-foreground">{m.role}</p>
                     </div>
                   </div>
-                  {m.tags && (
-                    <div className="relative mt-5 flex flex-wrap gap-1.5">
-                      {m.tags.slice(0, 4).map((t) => (
-                        <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                   <div className="relative mt-5 flex items-center gap-1.5">
-                    <a
-                      href={m.links?.linkedin ?? "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${m.name} on LinkedIn`}
-                      className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-                    >
-                      <Linkedin className="h-3.5 w-3.5" />
-                    </a>
-                    <a
-                      href={m.links?.github ?? "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${m.name} on GitHub`}
-                      className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                    </a>
+                    {m.links?.linkedin && (
+                      <a
+                        href={m.links.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} on LinkedIn`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Linkedin className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {m.links?.github && (
+                      <a
+                        href={m.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} on GitHub`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {m.links?.portfolio && (
+                      <a
+                        href={m.links.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} portfolio`}
+                        className="grid h-8 w-8 place-items-center rounded-md border border-hairline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
+                      >
+                        <Globe className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
