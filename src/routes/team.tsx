@@ -51,34 +51,6 @@ function SpotlightCard({ m }: { m: TeamMember }) {
           </p>
         )}
 
-        {m.bio && <p className="mt-5 text-sm leading-relaxed text-white/65">{m.bio}</p>}
-
-        {m.experience && (
-          <ul className="mt-6 space-y-2">
-            {m.experience.slice(0, 4).map((e) => (
-              <li
-                key={e}
-                className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/60 transition-colors duration-300 hover:border-white/25 hover:text-white"
-              >
-                {e}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {m.tags && (
-          <div className="mt-6 flex flex-wrap gap-1.5">
-            {m.tags.map((t) => (
-              <span
-                key={t}
-                className="rounded-md border border-white/10 px-2 py-1 text-[11px] text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/50 hover:text-cta"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
-
         <div className="mt-7 flex flex-wrap gap-2">
           <a
             href={m.links?.linkedin ?? "#"}
@@ -198,15 +170,6 @@ function TeamPage() {
                       <p className="mt-0.5 truncate text-xs text-muted-foreground">{m.role}</p>
                     </div>
                   </div>
-                  {m.tags && (
-                    <div className="relative mt-5 flex flex-wrap gap-1.5">
-                      {m.tags.slice(0, 4).map((t) => (
-                        <span key={t} className="rounded-md bg-surface px-2 py-0.5 text-[11px] text-ink-soft">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                   <div className="relative mt-5 flex items-center gap-1.5">
                     <a
                       href={m.links?.linkedin ?? "#"}
