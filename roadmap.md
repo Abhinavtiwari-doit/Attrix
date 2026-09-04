@@ -1,4 +1,4 @@
-- [ ] Audit shared sections across routes
-- [ ] Give Services, Products, Work, SaaS, and Team distinct page structures
-- [ ] Remove avoidable repeated homepage/project tutorial section duplication
+- [x] Audit shared sections across routes
+- [x] Give Services, Products, Work, SaaS, and Team distinct page structures
+- [x] Remove avoidable repeated homepage/project tutorial section duplication
 - [ ] Verify build and key routes

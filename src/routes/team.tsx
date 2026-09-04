@@ -1,7 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Linkedin, Github, Globe } from "lucide-react";
 import { Section, Reveal } from "@/components/site/primitives";
-import { CtaCard } from "@/components/site/CtaCard";
 import { team, type TeamMember } from "@/content/site";
 
 export const Route = createFileRoute("/team")({
@@ -130,7 +129,17 @@ function TeamPage() {
         </Reveal>
       </Section>
 
-      <CtaCard eyebrow="Hiring?" title="Want this team on your account?" secondaryLabel="See open roles" secondaryTo="/careers" />
+      <section className="bg-ink px-5 py-12 text-primary-foreground md:px-8 md:py-16">
+        <div className="container-page flex flex-col gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="eyebrow text-white/55">Work with us</p>
+            <h2 className="mt-2 text-2xl font-bold text-primary-foreground md:text-3xl">The next seat at the table could be yours.</h2>
+          </div>
+          <Link to="/careers" className="group inline-flex items-center gap-2 text-sm font-semibold text-cta transition-colors hover:text-primary-foreground">
+            See open roles <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

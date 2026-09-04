@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { EngagementIncludes } from "@/components/site/EngagementIncludes";
-import { CtaCard } from "@/components/site/CtaCard";
 import {
   ArrowRight,
   Sparkles,
@@ -17,7 +15,6 @@ import {
   CircleDot,
 } from "lucide-react";
 import { Section, Reveal, SectionHeading, Pill } from "@/components/site/primitives";
-import { BentoFeatures } from "@/components/site/BentoFeatures";
 
 export const Route = createFileRoute("/saas")({
   head: () => ({
@@ -142,8 +139,6 @@ function SaasPage() {
           </Reveal>
         </div>
       </section>
-
-      <BentoFeatures />
 
       {/* Modules */}
       <Section>
@@ -293,19 +288,6 @@ function SaasPage() {
           </div>
         </div>
       </Section>
-
-      {/* SHARED SECTIONS */}
-      <EngagementIncludes />
-
-      {/* CTA */}
-      <CtaCard
-        eyebrow="Early access"
-        title="Get on the list before the cohort fills."
-        subtitle="Tell us what you're automating today and we'll show you the module that replaces it."
-        primaryLabel="Join the waitlist"
-        secondaryLabel="Explore products"
-        secondaryTo="/products"
-      />
 
     </>
   );

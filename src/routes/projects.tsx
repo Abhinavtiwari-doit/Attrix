@@ -3,10 +3,6 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
 import { Section, ImagePlaceholder, Pill, Reveal } from "@/components/site/primitives";
 import { projects, site } from "@/content/site";
-import { VideoTutorials } from "@/components/site/VideoTutorials";
-import { IndustrySpotlight } from "@/components/site/IndustrySpotlight";
-import { EngagementIncludes } from "@/components/site/EngagementIncludes";
-import { CtaCard } from "@/components/site/CtaCard";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -37,6 +33,11 @@ function ProjectsPage() {
   });
 
   const [hero, ...others] = filtered;
+  const proofStats = [
+    { value: String(projects.length), label: "documented builds" },
+    { value: String(new Set(projects.map((p) => p.industry)).size), label: "industries represented" },
+    { value: String(new Set(projects.flatMap((p) => p.tech)).size), label: "tools in production" },
+  ];
 
   return (
     <>
@@ -216,10 +217,45 @@ function ProjectsPage() {
         )}
       </Section>
 
-      <VideoTutorials />
-      <IndustrySpotlight />
-      <EngagementIncludes />
-      <CtaCard eyebrow="Ready?" title="Want a case study like these?" secondaryLabel="Browse services" secondaryTo="/services" />
+      <Section tone="ink">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="eyebrow text-white/55">The evidence ledger</p>
+            <h2 className="mt-3 text-3xl font-bold text-primary-foreground md:text-5xl">Proof before promises.</h2>
+            <p className="mt-4 max-w-md text-sm text-white/65 md:text-base">Every case study is a compact record of the problem, the system, and the movement that followed.</p>
+          </div>
+          <div className="grid grid-cols-3 divide-x divide-white/10 border-y border-white/10">
+            {proofStats.map((stat) => (
+              <div key={stat.label} className="px-4 py-6 first:pl-0 last:pr-0 sm:px-6">
+                <p className="font-display text-3xl font-bold text-cta md:text-5xl">{stat.value}</p>
+                <p className="mt-2 text-[10px] uppercase tracking-widest text-white/45">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-12 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from(new Set(projects.map((p) => p.category))).map((category) => {
+            const count = projects.filter((p) => p.category === category).length;
+            return (
+              <div key={category} className="group flex items-center justify-between border-b border-white/10 py-3 text-sm text-white/65 transition-colors duration-300 hover:text-primary-foreground">
+                <span>{category}</span>
+                <span className="font-mono text-xs text-brand transition-transform duration-300 group-hover:translate-x-1">{String(count).padStart(2, "0")}</span>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+      <section className="container-page py-14 md:py-20">
+        <div className="flex flex-col gap-4 border-y border-hairline py-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="eyebrow">Your turn</p>
+            <h2 className="mt-2 text-2xl font-bold md:text-3xl">Bring us the stubborn problem.</h2>
+          </div>
+          <Link to="/contact" className="group inline-flex items-center gap-2 text-sm font-semibold text-brand link-underline">
+            Start a project <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
