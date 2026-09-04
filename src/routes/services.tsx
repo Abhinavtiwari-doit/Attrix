@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Section, Pill } from "@/components/site/primitives";
-import { Link } from "@tanstack/react-router";
 import { process, services } from "@/content/site";
 
 export const Route = createFileRoute("/services")({
