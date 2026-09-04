@@ -1,11 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Section, ImagePlaceholder, Pill } from "@/components/site/primitives";
-import { StackedCapabilities } from "@/components/site/StackedCapabilities";
-import { EngagementIncludes } from "@/components/site/EngagementIncludes";
-import { CtaCard } from "@/components/site/CtaCard";
-import { BentoFeatures } from "@/components/site/BentoFeatures";
-import { ShowcaseRows } from "@/components/site/ShowcaseRows";
 import { products } from "@/content/site";
 
 export const Route = createFileRoute("/products")({
@@ -38,12 +33,14 @@ function ProductsPage() {
           </Link>
         </div>
       </Section>
-      <ShowcaseRows
-        eyebrow="Built for adoption"
-        title="Products with a job to do."
-        subtitle="Focused tools, measured outcomes, and a team behind the rollout when you need it."
-      />
       <Section className="!pt-6">
+        <div className="mb-10 flex items-end justify-between gap-5 border-b border-hairline pb-5">
+          <div>
+            <p className="eyebrow">The catalog</p>
+            <h2 className="mt-2 text-2xl font-bold md:text-3xl">Pick the layer you need first.</h2>
+          </div>
+          <p className="hidden max-w-xs text-right text-sm text-muted-foreground sm:block">Start small, connect your existing stack, and expand only when the workflow proves itself.</p>
+        </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
             <div key={p.slug} className="card-lift group flex flex-col rounded-2xl border border-hairline bg-background p-4">
@@ -71,10 +68,40 @@ function ProductsPage() {
           ))}
         </div>
       </Section>
-      <BentoFeatures />
-      <StackedCapabilities />
-      <EngagementIncludes />
-      <CtaCard eyebrow="Ready?" title="Need a product built like these?" secondaryLabel="See our work" secondaryTo="/projects" />
+      <Section tone="ink">
+        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p className="eyebrow text-white/55">Included by default</p>
+            <h2 className="mt-3 text-3xl font-bold text-primary-foreground md:text-5xl">Useful on day one. Extendable on day one hundred.</h2>
+            <p className="mt-4 text-sm text-white/65 md:text-base">Every product is designed to leave your team with a working foundation, not another isolated subscription.</p>
+          </div>
+          <div className="divide-y divide-white/10 border-y border-white/10">
+            {[
+              ["Working workflows", "The core job is ready to run, not just configure."],
+              ["Integration hooks", "Connect the systems you already use through clean extension points."],
+              ["Owner-ready docs", "Your operators can understand, maintain, and improve the setup."],
+              ["Measured adoption", "Usage and outcome signals show where the product is earning its place."],
+            ].map(([title, body]) => (
+              <div key={title} className="group grid gap-3 py-5 sm:grid-cols-[1fr_1.2fr_auto] sm:items-center">
+                <h3 className="font-semibold text-primary-foreground">{title}</h3>
+                <p className="text-sm text-white/55">{body}</p>
+                <Check className="h-4 w-4 text-cta transition-transform duration-300 group-hover:scale-125" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+      <section className="container-page py-14 md:py-20">
+        <div className="flex flex-col gap-4 border-b border-hairline pb-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="eyebrow">Need something specific?</p>
+            <h2 className="mt-2 text-2xl font-bold md:text-3xl">Turn the next product gap into an advantage.</h2>
+          </div>
+          <Link to="/contact" className="group inline-flex items-center gap-2 text-sm font-semibold text-brand link-underline">
+            Request a product conversation <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
