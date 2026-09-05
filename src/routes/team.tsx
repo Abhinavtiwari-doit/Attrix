@@ -60,14 +60,14 @@ function TeamCard({ m }: { m: TeamMember }) {
       </div>
 
       {hasLinks ? (
-        <div className="relative mt-5 flex flex-wrap items-center gap-2">
+        <div className="relative mt-6 flex flex-wrap items-center gap-2">
           {m.links?.linkedin && (
             <a
               href={m.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on LinkedIn`}
-              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
+              className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
             >
               <Linkedin className="h-4 w-4" />
             </a>
@@ -78,7 +78,7 @@ function TeamCard({ m }: { m: TeamMember }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on GitHub`}
-              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
+              className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -89,14 +89,14 @@ function TeamCard({ m }: { m: TeamMember }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} portfolio`}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-white/10 px-3 text-xs text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
+              className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-white/10 px-4 text-sm text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-cta/60 hover:text-cta"
             >
-              <Globe className="h-3.5 w-3.5" /> Portfolio
+              <Globe className="h-4 w-4" /> Portfolio
             </a>
           )}
         </div>
       ) : (
-        <p className="relative mt-5 text-xs text-white/40">Profile links coming soon.</p>
+        <p className="relative mt-6 text-xs text-white/40">Profile links coming soon.</p>
       )}
     </article>
   );
@@ -136,7 +136,7 @@ function TeamPage() {
             {team.length} people
           </p>
         </div>
-        <Reveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (
             <TeamCard key={m.name} m={m} />
           ))}
