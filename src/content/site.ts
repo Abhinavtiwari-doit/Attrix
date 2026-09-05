@@ -227,6 +227,8 @@ export type TeamMember = {
   role: string;
   dept: string;
   location?: string;
+  /** Optional headshot URL (CDN asset URL or absolute https URL). Falls back to initials. */
+  photo?: string;
   bio?: string;
   experience?: string[];
   skillBars?: { label: string; value: number; color?: string }[];
