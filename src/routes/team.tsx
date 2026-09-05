@@ -31,30 +31,30 @@ function TeamCard({ m }: { m: TeamMember }) {
   const hasLinks = m.links && (m.links.linkedin || m.links.github || m.links.portfolio);
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-ink p-6 text-primary-foreground transition-all duration-500 hover:-translate-y-1.5 hover:border-cta/50 hover:shadow-[0_20px_60px_-20px_hsl(var(--cta)/0.35)]">
+    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-ink p-8 text-primary-foreground transition-all duration-500 hover:-translate-y-1.5 hover:border-cta/50 hover:shadow-[0_20px_60px_-20px_hsl(var(--cta)/0.35)]">
       <div className="pointer-events-none absolute inset-x-0 -top-24 h-40 bg-brand/20 opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100" />
       <div className="pointer-events-none absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-cta/10 blur-2xl transition-opacity duration-700 group-hover:opacity-100 opacity-0" />
 
-      <div className="relative flex items-center gap-4">
+      <div className="relative flex items-center gap-5">
         {m.photo ? (
           <img
             src={m.photo}
             alt={`${m.name} headshot`}
             loading="lazy"
-            className="h-14 w-14 shrink-0 rounded-xl border border-white/10 object-cover transition-transform duration-500 group-hover:scale-110"
+            className="h-20 w-20 shrink-0 rounded-xl border border-white/10 object-cover transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/5 font-display text-base font-bold text-brand transition-transform duration-500 group-hover:scale-110">
+          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/5 font-display text-xl font-bold text-brand transition-transform duration-500 group-hover:scale-110">
             {initials(m.name)}
           </span>
         )}
         <div className="min-w-0">
-          <h3 className="truncate text-base font-semibold text-white transition-colors duration-300 group-hover:text-cta">
+          <h3 className="truncate text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cta">
             {m.name}
           </h3>
-          <p className="mt-0.5 truncate text-xs text-cta">{m.role}</p>
+          <p className="mt-1 truncate text-sm text-cta">{m.role}</p>
           {m.location && (
-            <p className="mt-0.5 truncate text-[11px] text-white/45">{m.location}</p>
+            <p className="mt-1 truncate text-xs text-white/45">{m.location}</p>
           )}
         </div>
       </div>
