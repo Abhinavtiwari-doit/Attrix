@@ -60,23 +60,6 @@ export function SiteFooter() {
             Book a consultation
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-          <div className="mt-7 flex items-center gap-3">
-            {[
-              { href: site.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
-              { href: site.socials.github, label: "GitHub", Icon: Github },
-              { href: site.socials.twitter, label: "Twitter", Icon: Twitter },
-              { href: site.socials.youtube, label: "YouTube", Icon: Youtube },
-            ].map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="grid h-9 w-9 place-items-center rounded-md border border-hairline bg-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-8 md:col-span-5 md:grid-cols-3">
