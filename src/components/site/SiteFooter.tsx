@@ -60,23 +60,6 @@ export function SiteFooter() {
             Book a consultation
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-          <div className="mt-7 flex items-center gap-3">
-            {[
-              { href: site.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
-              { href: site.socials.github, label: "GitHub", Icon: Github },
-              { href: site.socials.twitter, label: "Twitter", Icon: Twitter },
-              { href: site.socials.youtube, label: "YouTube", Icon: Youtube },
-            ].map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="grid h-9 w-9 place-items-center rounded-md border border-hairline bg-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-8 md:col-span-5 md:grid-cols-3">
@@ -118,14 +101,65 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="hairline-t relative z-10">
-        <div className="container-page flex flex-col items-start justify-between gap-3 py-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-4">
-            <span>{site.address}</span>
-            <a href="#" className="hover:text-ink">Privacy</a>
-            <a href="#" className="hover:text-ink">Terms</a>
+      {/* HubSpot-style centered bottom bar */}
+      <div className="hairline-t relative z-10 bg-background/40">
+        <div className="container-page flex flex-col items-center gap-5 py-10 text-center">
+          <div className="flex w-full items-center gap-5">
+            <span aria-hidden className="h-px flex-1 bg-hairline" />
+            <div className="flex items-center gap-3">
+              {[
+                { href: site.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
+                { href: site.socials.github, label: "GitHub", Icon: Github },
+                { href: site.socials.twitter, label: "Twitter", Icon: Twitter },
+                { href: site.socials.youtube, label: "YouTube", Icon: Youtube },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink/5 hover:text-ink"
+                >
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
+            </div>
+            <span aria-hidden className="h-px flex-1 bg-hairline" />
           </div>
+
+          <Link to="/" className="group flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
+              <span className="font-display text-sm font-bold">A</span>
+            </span>
+            <span className="font-display text-lg font-bold tracking-tight">
+              Attrix<span className="text-brand">.</span>
+            </span>
+          </Link>
+
+          <p className="text-xs text-muted-foreground">
+            Copyright © {new Date().getFullYear()} {site.name}, Inc.
+          </p>
+
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs">
+            {[
+              { label: "Legal Center", href: "#" },
+              { label: "Privacy Policy", href: "#" },
+              { label: "Security", href: "#" },
+              { label: "Website Accessibility", href: "#" },
+              { label: "Manage Cookies", href: "#" },
+            ].map((l, i) => (
+              <span key={l.label} className="flex items-center gap-2">
+                {i > 0 && <span aria-hidden className="text-muted-foreground/50">|</span>}
+                <a
+                  href={l.href}
+                  className="underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:text-brand hover:decoration-brand"
+                >
+                  {l.label}
+                </a>
+              </span>
+            ))}
+          </nav>
+
+          <p className="text-xs text-muted-foreground/70">{site.address}</p>
         </div>
       </div>
 
