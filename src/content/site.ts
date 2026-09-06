@@ -7,13 +7,12 @@ import blogDevelopment from "@/assets/blog-development.jpg";
 export const site = {
   name: "Attrix Technologies",
   tagline: "Transforming businesses through technology",
-  email: "hello@attrix.tech",
-  phone: "+91 90000 12345",
-  whatsapp: "+91 90000 12345",
+  email: "attrixtechnologies@gmail.com",
+  phone: "+91 89015 31764",
+  whatsapp: "+91 89015 31764",
   address: "Level 4, Innovation Park, Bengaluru, India",
   socials: {
     linkedin: "https://linkedin.com/company/attrix",
-    github: "https://github.com/attrix",
     twitter: "https://twitter.com/attrix",
     youtube: "https://youtube.com/@attrix",
   },
@@ -256,7 +255,7 @@ export const team: TeamMember[] = [
       { label: "AWS / Cloud", value: 88 },
     ],
     tags: ["Python", "AWS", "Zoho Deluge", "Pabbly", "ML/AI", "SQL", "Power BI"],
-    links: { linkedin: "#", portfolio: "#" },
+    links: { linkedin: "https://www.linkedin.com/in/abhinavtiwari--/", portfolio: "https://abhinavtiwari-doit.github.io/Portfolio-Website/" },
   },
   {
     name: "Jaya Pratha J",
@@ -295,7 +294,7 @@ export const team: TeamMember[] = [
       { label: "Financial Reporting", value: 88 },
     ],
     tags: ["Operations", "CRM Systems", "SOP Design", "MIS Reports", "KPI Strategy", "Tally Prime"],
-    links: { linkedin: "#" },
+    links: { linkedin: "https://www.linkedin.com/in/abhishek-tiwari123/" },
   },
   {
     name: "Manjay Verma",
